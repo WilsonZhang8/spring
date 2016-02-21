@@ -3,4 +3,11 @@
   <groupId>com.zghw</groupId>
   <artifactId>spring-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>4.2.4.RELEASE</version>
+    </dependency>
+</dependencies>
 </project>

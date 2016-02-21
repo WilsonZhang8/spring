@@ -1,0 +1,10 @@
+第一次包
+asm：使用java方式生成二进制.class文件
+cglib：java动态代理的另一个实现，主要为没有接口的类做代理，使用了asm作为底层实现。
+core:基础核心包
+lang:语言包
+objenesis:Objenesis是专门用于实例化一些特殊java对象的一个工具，如私有构造方法，带参数的构造等不能通过class.newInstance()实例化的，通过它可以轻松完成。
+util：工具类
+
+最主要的是core 和util
+首先注解包：
