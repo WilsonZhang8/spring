@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.util.ClassUtils;
-
+/**
+ * Class类工具
+ * @author zghw
+ *
+ */
 public class ClassUtilsTest {
 
 	public static void main(String[] args) throws ClassNotFoundException, LinkageError {

@@ -3,7 +3,11 @@ package com.zghw.spring.demo.core.util;
 import java.util.*;
 
 import org.springframework.util.CollectionUtils;
-
+/**
+ * 集合类工具功能使用
+ * @author zghw
+ *
+ */
 public class CollectionUtilsTest {
 	static void f(Object obj){
 		System.out.println(obj);
