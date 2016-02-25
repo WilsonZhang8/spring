@@ -5,10 +5,12 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.util.ClassUtils;
+import org.springframework.util.ObjectUtils;
 /**
  * Class类工具
  * @author zghw
@@ -106,6 +108,24 @@ public class ClassUtilsTest {
 		//判断某个类在类加载器中是否可见的
 		System.out.println(ClassUtils.isVisible(ArrayList.class,cl));
 		System.out.println(ClassUtils.isVisible(ArrayList.class,pcl));
+		Class<List> A = List.class;
+		Class<LinkedList> B = LinkedList.class;
+		Class<LinkedList> C = LinkedList.class;
+		
+		//判断A是否来自于比，包含了等于，超类 接口中
+		System.out.println(A.isAssignableFrom(B));
+		
+		System.out.println(ClassUtils.isAssignable(A, B));
+		Class<?> D=int.class;
+		Class<?> E=Integer.class;
+		//原生类型Java判断 我门要任务Integer.class 和int.class相同
+		System.out.println(D.isAssignableFrom(E));
+		System.out.println(E.isAssignableFrom(D));
+		//为原生类型做判断
+		System.out.println(ClassUtils.isAssignable(D, E));
+		System.out.println(ClassUtils.isAssignable(E, D));
+		System.out.println(ObjectUtils.nullSafeEquals(List.class,LinkedList.class));
+		
 	}
 
 }
