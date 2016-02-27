@@ -1,4 +1,4 @@
-package com.zghw.spring.demo.core.core.annonation;
+package com.zghw.spring.demo.core.core;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Inherited;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.ReflectionUtils;
 
+import com.zghw.spring.demo.core.core.annonation.Fruit;
 import com.zghw.spring.demo.core.core.source.TypeClassImple;
 
 /**

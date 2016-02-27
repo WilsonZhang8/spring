@@ -1,5 +1,6 @@
 package com.zghw.spring.demo.core.core.source;
 
+import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import com.zghw.spring.demo.core.Ordered;
+import com.zghw.spring.demo.core.core.annonation.Do;
+import com.zghw.spring.demo.core.core.annonation.Fruit;
+import com.zghw.spring.demo.core.core.annonation.Test;
+import com.zghw.spring.demo.core.core.annonation.Todo;
 
 @Component
 @Service
@@ -29,14 +34,17 @@ public class TypeClassImple extends TypeClass implements Ordered {
 
 	}
 	@Autowired
+	@Todo("alias")
+	@Do(value="苹果",price=123)
+	@Test(names={"green","red"},list=List.class,aw=@Autowired(required=false),policy=RetentionPolicy.CLASS)
 	public void methodTwo(int a,String b) {
-
+		System.out.println("被注解的方法");
 	}
-
+	@Do(value="苹果",price=123)
 	public void methodThree(TwoTuple<Integer,String> tt,User user,boolean b) {
 		
 	}
-
+	@Do(value="苹果",price=123)
 	public User returnMethod() {
 		return new User();
 	}
