@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.CachingMetadataReaderFactory"
+        x="-39" y="-96">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.SimpleMetadataReaderFactory"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.TypeFilter" x="102" y="-695">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.ClassVisitor"
+        x="-38" y="22">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AbstractRecursiveAnnotationVisitor"
+        x="212" y="563">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotationVisitor"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.AnnotationMetadata"
+        x="256" y="243">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotatedTypeMetadata"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.ClassMetadata"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.ClassMetadataReadingVisitor"
+        x="-98" y="139">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.ClassVisitor"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.ClassMetadata"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.MetadataReader"
+        x="329" y="-221">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.MethodMetadata"
+        x="501" y="248">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotatedTypeMetadata"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.RecursiveAnnotationAttributesVisitor"
+        x="46" y="640">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AbstractRecursiveAnnotationVisitor"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.StandardMethodMetadata"
+        x="593" y="394">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.MethodMetadata"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.MetadataReaderFactory"
+        x="-21" y="-295">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AnnotationAttributesReadingVisitor"
+        x="49" y="731">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.RecursiveAnnotationAttributesVisitor"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.AnnotationVisitor"
+        x="275" y="475">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.SimpleMetadataReaderFactory"
+        x="-38" y="-188">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.MetadataReaderFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.StandardClassMetadata"
+        x="103" y="398">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.ClassMetadata"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AbstractTypeHierarchyTraversingFilter"
+        x="261" y="-549">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.TypeFilter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.SimpleMetadataReader"
+        x="307" y="-87">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.MetadataReader"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AbstractClassTestingTypeFilter"
+        x="-168" y="-542">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.TypeFilter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.RecursiveAnnotationArrayVisitor"
+        x="419" y="646">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AbstractRecursiveAnnotationVisitor"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.MethodMetadataReadingVisitor"
+        x="703" y="252">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.MethodVisitor"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.MethodMetadata"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AnnotationTypeFilter"
+        x="90" y="-437">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AbstractTypeHierarchyTraversingFilter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.AspectJTypeFilter"
+        x="85" y="-547">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.TypeFilter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AnnotationMetadataReadingVisitor"
+        x="-120" y="245">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotationMetadata"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.ClassMetadataReadingVisitor"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AnnotatedTypeMetadata"
+        x="350" y="24">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.AssignableTypeFilter"
+        x="316" y="-435">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AbstractTypeHierarchyTraversingFilter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.MethodVisitor"
+        x="749" y="38">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.RegexPatternTypeFilter"
+        x="-150" y="-441">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AbstractClassTestingTypeFilter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.StandardAnnotationMetadata"
+        x="336" y="394">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotatedTypeMetadata"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.StandardClassMetadata"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.core.type.ClassMetadata"
+        x="147" y="26">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Note x="244" y="-686">过滤工厂生产的Metadata</Note>
+    <Note x="-91" y="-353">工厂生产MetadataReader</Note>
+    <Note x="-73" y="-32">使用访问器模式访问底层加载类文件信息填充到类元素中包含了类、注解、方法等</Note>
+    <Note x="439" y="-164">读取资源得到类元数据</Note>
+</ClassDiagram>
