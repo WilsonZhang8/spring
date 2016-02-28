@@ -3,7 +3,7 @@ package com.zghw.spring.demo.core.util;
 import org.springframework.util.NumberUtils;
 
 /**
- * 把Number下的类型互相转换
+ * 用处：把Number下的类型互相转换
  * 
  * @see java.lang.Byte
  * @see java.lang.Short

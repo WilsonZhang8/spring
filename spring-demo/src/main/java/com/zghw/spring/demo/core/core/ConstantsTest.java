@@ -7,7 +7,7 @@ import com.zghw.spring.demo.core.core.source.Phone;
 
 /**
  * 常量类型工具处理常量。
- * 
+ * 用处：加载类中的public static final常量进行分析其信息 查找 转换等
  * @author zghw
  *
  */

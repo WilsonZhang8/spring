@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.springframework.util.FileCopyUtils;
 /**
- * 数据流之间的拷贝
+ * 用处：数据流之间的拷贝
  * @author zghw
  *
  */

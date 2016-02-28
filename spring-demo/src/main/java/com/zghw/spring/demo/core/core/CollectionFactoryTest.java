@@ -6,8 +6,10 @@ import org.springframework.core.CollectionFactory;
 
 import com.zghw.spring.demo.core.core.source.ApproximableMap;
 import com.zghw.spring.demo.core.core.source.ApproximableList;
+
 /**
  * 通过集合类型创建常用的集合对象
+ * 用处：Map.class List.class 等常用集合类型转换为对象 Map  List  
  * @author zghw
  *
  */
@@ -17,7 +19,7 @@ public class CollectionFactoryTest {
 	}
 
 	public static void main(String[] args) {
-		//通过集合类型创建常用的集合对象
+		// 通过集合类型创建常用的集合对象
 		Map<Object, Object> hm = CollectionFactory
 				.createMap(HashMap.class, 100);
 		Map<Object, Object> hm1 = CollectionFactory.createMap(

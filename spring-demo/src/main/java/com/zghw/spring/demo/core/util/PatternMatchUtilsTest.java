@@ -2,6 +2,7 @@ package com.zghw.spring.demo.core.util;
 
 import org.springframework.util.PatternMatchUtils;
 /**
+ * 用处： 匹配字符串 查找信息
  * xx 模式匹配 * 、*xx 、*xx* 、xx* 、*xx*y 
  * @author zghw
  *

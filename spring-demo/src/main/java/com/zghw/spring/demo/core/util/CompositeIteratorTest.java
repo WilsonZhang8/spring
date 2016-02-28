@@ -5,6 +5,7 @@ import java.util.*;
 import org.springframework.util.CompositeIterator;
 
 /**
+ * 用处：组合多个迭代器(也就是实现了迭代器的都可以)为一个迭代器
  * 组合多个迭代器(也就是实现了迭代器的都可以)为一个迭代器
  * @author zghw
  *

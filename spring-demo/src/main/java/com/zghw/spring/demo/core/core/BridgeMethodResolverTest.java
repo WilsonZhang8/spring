@@ -13,7 +13,7 @@ import com.zghw.spring.demo.core.core.source.Lis;
 
 /**
  * 泛型生成桥梁方法解析器
- * 
+ * 用处：判断是否是桥梁方法 把桥梁方法转化为正常方法
  * @author zghw
  *
  */
@@ -70,8 +70,7 @@ public class BridgeMethodResolverTest {
 			System.out.println("转化后："+declar.getName() + " isBrideg:"+declar.isBridge()+",");
 		}
 		/**
-		 * 判断桥接方法的主要原理：
-		 * 循环该类中的所有方法，判断方法名相等，参数个数相等
+		 * 判断桥接方法的主要原理： 循环该类中的所有方法，判断方法名相等，参数个数相等
 		 */
 		
 	}

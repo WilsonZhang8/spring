@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.IOException;
 
 import org.springframework.util.FileSystemUtils;
+/*
+ * 删除文件目录
+ * **
+ */
 
 public class FileSystemUtilsTest {
 	public static void main(String args[]) throws IOException{

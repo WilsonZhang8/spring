@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.util.ObjectUtils;
 
 /**
+ * 用处： 基本类型的比较或数组比较如果认为两个对象是相等的 可以使用Object工具类
  * 对象Object工具类示例
  * 主要对数组中基本类型对象的equal方法比较，得到基本类型的hashcode，重写了toString方法对于基本类型的使用
  * @author zghw

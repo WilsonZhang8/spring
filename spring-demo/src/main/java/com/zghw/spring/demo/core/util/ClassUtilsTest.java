@@ -12,6 +12,7 @@ import java.util.Set;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ObjectUtils;
 /**
+ * 用处：Class 的 类加载 、查找类信息、类信息的处理等
  * Class类工具
  * @author zghw
  *

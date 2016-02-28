@@ -11,6 +11,7 @@ import org.springframework.util.ReflectionUtils.MethodCallback;
 import org.springframework.util.ReflectionUtils.MethodFilter;
 
 /**
+ * 用处：封装反射功能  简化使用
  * 反射工具类使用示例
  * 
  * @author zghw

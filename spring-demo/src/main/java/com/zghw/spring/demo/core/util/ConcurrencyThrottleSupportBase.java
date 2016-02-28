@@ -2,7 +2,7 @@ package com.zghw.spring.demo.core.util;
 
 import org.springframework.util.ConcurrencyThrottleSupport;
 /**
- * 控制并发任务数量
+ * 用处：控制并发任务数量
  * 
  * 在工作前 如果线程并发数大于线程设置的最大数，则线程等待其他线程释放
  * 否则就线程任务，

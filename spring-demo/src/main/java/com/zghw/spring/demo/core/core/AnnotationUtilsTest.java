@@ -21,6 +21,9 @@ import com.zghw.spring.demo.core.core.annonation.Fruit;
 import com.zghw.spring.demo.core.core.source.TypeClassImple;
 
 /**
+ * 
+ * 用处：使用反射查找注解信息
+ * 
  * find*（）方法用于得到注解对象 多层次 包含了接口 继承的注解 简单的注解对象 get*()方法但层次
  * get方法取的多数为复合annotation对象
  * 

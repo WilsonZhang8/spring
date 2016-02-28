@@ -7,6 +7,7 @@ import java.net.URL;
 import org.springframework.util.ResourceUtils;
 
 /**
+ * 用处： 用于io资源操作 比如 classpath--URL-->File
  * 资源管理器使用示例
  * @author zghw
  *

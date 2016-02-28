@@ -14,7 +14,7 @@ import com.zghw.spring.demo.core.core.source.User;
 /**
  * 取得类型中所有方法和注入数据
  * 过滤类型中的方法
- * 
+ * 用处：类中方法注入数据、类中的方法过滤、类中的代理方法转化为接口方法
  * @author zghw
  *
  */
@@ -50,8 +50,7 @@ public class MethodIntrospectorTest {
 		}
 		
 		/**
-		 * 如果是代理方法转换为目标接口方法
-		 * 方法是否是代理，如果是代理方法则转换为目标接口方法
+		 * 如果是代理方法转换为目标接口方法 方法是否是代理，如果是代理方法则转换为目标接口方法
 		 */
 		MethodIntrospector.selectInvocableMethod(ReflectionUtils.findMethod(User.class, "a"),User.class);
 	}

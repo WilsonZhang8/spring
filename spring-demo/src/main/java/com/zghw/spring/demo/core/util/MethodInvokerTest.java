@@ -8,6 +8,7 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.MethodInvoker;
 
 /**
+ * 用处：可配置的反射方式调用方法
  * 在运行时调用方法，需要设置目标类或目标对象、目标方法、及参数
  * @author zghw
  *

@@ -7,6 +7,7 @@ import org.springframework.util.DefaultPropertiesPersister;
 import org.springframework.util.PropertiesPersister;
 
 /**
+ * 用处：加载属性文件转换为Properties为一个接口对象 以便可以使用模式
  * 属性文件的输入和输出
  * @author zghw
  *

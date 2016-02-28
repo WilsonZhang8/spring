@@ -20,6 +20,8 @@ import org.springframework.util.ReflectionUtils;
 
 import com.zghw.spring.demo.core.core.source.TypeClassImple;
 /**
+ * 用处：用于取的Class及注解的元数据
+ * 
  * 这个core中的一个重点
  * 两种方式来注入元数据获得类、注解、方法元数据信息
  * 1.使用ASM方式

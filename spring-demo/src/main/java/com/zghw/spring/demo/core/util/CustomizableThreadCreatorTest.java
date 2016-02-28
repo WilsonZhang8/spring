@@ -3,6 +3,7 @@ package com.zghw.spring.demo.core.util;
 import org.springframework.util.CustomizableThreadCreator;
 
 /**
+ * 用处：可配置线程信息
  * 配置一个线程，最要可以设置一些线程的基本参数
  * @author zghw
  *

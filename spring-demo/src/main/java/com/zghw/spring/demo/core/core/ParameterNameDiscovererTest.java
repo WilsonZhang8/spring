@@ -11,6 +11,8 @@ import org.springframework.util.ReflectionUtils;
 
 import com.zghw.spring.demo.core.util.User;
 /**
+ *  用处：得到方法或构造方法中的参数名称
+ *  
  * 取得方法及构造方法中参数定义的名称
  * @author zghw
  *

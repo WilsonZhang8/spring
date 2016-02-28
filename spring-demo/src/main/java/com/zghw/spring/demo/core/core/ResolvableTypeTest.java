@@ -18,7 +18,16 @@ import com.zghw.spring.demo.core.core.source.TypeClassImple;
 import com.zghw.spring.demo.core.core.source.User;
 
 /**
- * 封装了反射类型，能够访问超类，接口及泛型解析可以得到Class类型 ResolvableType对象可以从字段、方法参数、方法返回值、Class类型
+ * 封装了反射类型，能够访问超类，接口及泛型解析可以得到Class类型 ResolvableType对象可以从字段、方法参数、方法返回值、Class类型中获取
+ * 
+ * 用处：所有类型封装为同一访问对象ResolvableType，使用其可以得到类型的所有信息
+ * 对以下类型进行转化为ResolvableType对象：
+ * 1.字段
+ * 2.方法参数
+ * 3.方法返回值
+ * 4.Class类型
+ * 5.Type类型
+ * 还有其他
  * 
  * @author zghw
  *

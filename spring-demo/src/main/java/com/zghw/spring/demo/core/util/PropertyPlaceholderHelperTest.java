@@ -3,7 +3,11 @@ package com.zghw.spring.demo.core.util;
 import java.util.Properties;
 
 import org.springframework.util.PropertyPlaceholderHelper;
-
+/**
+ * 用处：解析文件中占位符并替换时。
+ * @author zghw
+ *
+ */
 public class PropertyPlaceholderHelperTest {
 
 	public static void main(String[] args) {

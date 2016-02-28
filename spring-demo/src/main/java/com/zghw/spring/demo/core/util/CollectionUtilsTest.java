@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.util.CollectionUtils;
 /**
+ * 用处：Collections功能的扩展
  * 集合类工具功能使用
  * @author zghw
  *

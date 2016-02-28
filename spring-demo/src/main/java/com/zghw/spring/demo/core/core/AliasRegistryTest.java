@@ -4,7 +4,7 @@ import org.springframework.core.AliasRegistry;
 import org.springframework.core.SimpleAliasRegistry;
 
 /**
- * 别名注册示例
+ * 别名注册示例 用处：别名管理
  * 
  * @author zghw
  *
@@ -25,7 +25,7 @@ public class AliasRegistryTest {
 		for (String a : alias) {
 			System.out.println(a);
 		}
-		//移除别名
+		// 移除别名
 		ar.removeAlias("lisi");
 		System.out.println(ar.isAlias("lisi"));
 	}
