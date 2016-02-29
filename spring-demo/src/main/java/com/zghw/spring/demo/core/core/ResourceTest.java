@@ -34,7 +34,7 @@ public class ResourceTest {
 		getResourceInfo(resource);
 		f("\n#################### classpath方式查找资源信息 #############################");
 		//默认是当前classpath路径下  它使用类加载或class对象产生URL然后在转化为File对象
-		resource = new ClassPathResource("/uml/TestInterface.mgi");
+		resource = new ClassPathResource("/uml/TestInterface.mgi",ResourceTest.class);
 		getResourceInfo(resource);
 		//也可以使用自定义的类加载器
 		resource = new ClassPathResource("/uml/TestInterface.mgi",ResourceTest.class.getClassLoader());
@@ -55,7 +55,7 @@ public class ResourceTest {
 		resource =new DescriptiveResource("only descript");
 	}
 	//输出资源信息
-	private static void getResourceInfo(Resource resource) throws IOException {
+	public static void getResourceInfo(Resource resource) throws IOException {
 		f("输入流对象：" + resource.getInputStream());
 		f("文件流是否已经打开：" + resource.isOpen());
 		f("文件是否存在：" + resource.exists());
