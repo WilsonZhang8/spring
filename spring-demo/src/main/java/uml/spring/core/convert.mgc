@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ClassDiagram>
     <Class
-        name="com.zghw.spring.demo.beans.ArgumentConvertingMethodInvoker"
-        x="367" y="498">
+        name="com.zghw.spring.demo.core.convert.ZonedDateTimeToCalendarConverter"
+        x="720" y="827">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -10,31 +10,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanMetadataElement" x="620" y="-583">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.AbstractPropertyAccessor"
-        x="217" y="41">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.ConfigurablePropertyAccessor"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.TypeConverterSupport"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
     <Class
-        name="com.zghw.spring.demo.beans.ConfigurablePropertyAccessor"
-        x="182" y="-82">
+        name="com.zghw.spring.demo.core.convert.FallbackObjectToStringConverter"
+        x="107" y="671">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -42,33 +22,34 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.TypeConverter"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistry"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyAccessor"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PagedListHolder" x="441" y="362">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanMetadataAttribute"
-        x="727" y="-465">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.BeanMetadataElement"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
     </Class>
     <Class
-        name="com.zghw.spring.demo.beans.GenericTypeAwarePropertyDescriptor"
-        x="-72" y="596">
+        name="com.zghw.spring.demo.core.convert.NumberToCharacterConverter"
+        x="82" y="792">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ArrayToCollectionConverter"
+        x="913" y="431">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.ConverterRegistry"
+        x="111" y="-298">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -77,67 +58,8 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.TypeConverterSupport"
-        x="503" y="40">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.TypeConverter"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistrySupport"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanInfoFactory" x="-73" y="356">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.TypeConverterDelegate"
-        x="772" y="-73">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyAccessor" x="12" y="-182">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyEditorRegistrar"
-        x="472" y="-303">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.SimpleTypeConverter" x="513" y="166">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.TypeConverterSupport"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.Mergeable" x="912" y="-339">
+    <Class name="com.zghw.spring.demo.core.convert.GenericConverter"
+        x="521" y="-25">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -147,8 +69,8 @@
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
     <Class
-        name="com.zghw.spring.demo.beans.BeanMetadataAttributeAccessor"
-        x="464" y="-463">
+        name="com.zghw.spring.demo.core.convert.StringToUUIDConverter"
+        x="906" y="1030">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -156,10 +78,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.core.AttributeAccessorSupport"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.BeanMetadataElement"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.TypeConverter" x="728" y="-165">
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToTimeZoneConverter"
+        x="828" y="895">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -167,8 +90,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanWrapper" x="16" y="36">
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToCharsetConverter"
+        x="-339" y="1170">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -176,10 +102,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.ConfigurablePropertyAccessor"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.CachedIntrospectionResults"
-        x="-47" y="295">
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToCurrencyConverter"
+        x="-141" y="889">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -187,8 +114,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyValues" x="918" y="-526">
+    <Class
+        name="com.zghw.spring.demo.core.convert.ObjectToCollectionConverter"
+        x="984" y="277">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -196,9 +126,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.ResourceEditorRegistrar"
-        x="469" y="-220">
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToLocaleConverter"
+        x="-40" y="838">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -206,10 +138,44 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistrar"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyValuesEditor"
-        x="406" y="551">
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToArrayConverter"
+        x="942" y="375">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ArrayToArrayConverter"
+        x="1013" y="212">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.StreamConverter"
+        x="76" y="618">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.Converter" x="454" y="1299">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -219,8 +185,8 @@
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
     <Class
-        name="com.zghw.spring.demo.beans.PropertyEditorRegistrySupport"
-        x="471" y="-69">
+        name="com.zghw.spring.demo.core.convert.ObjectToStringConverter"
+        x="526" y="807">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -228,82 +194,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistry"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.MutablePropertyValues"
-        x="892" y="-406">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyValues"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyValue" x="532" y="-385">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.BeanMetadataAttributeAccessor"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.core.AttributeAccessorSupport"
-        x="179" y="-456">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.core.AttributeAccessor"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.core.Ordered" x="113" y="349">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.SortDefinition" x="752" y="347">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyAccessorFactory"
-        x="-23" y="-287">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.MutableSortDefinition"
-        x="722" y="475">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.SortDefinition"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
     <Class
-        name="com.zghw.spring.demo.beans.AbstractNestablePropertyAccessor"
-        x="192" y="165">
+        name="com.zghw.spring.demo.core.convert.ArrayToStringConverter"
+        x="892" y="500">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -311,10 +206,11 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.AbstractPropertyAccessor"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.ExtendedBeanInfoFactory"
-        x="-42" y="487">
+    <Class
+        name="com.zghw.spring.demo.core.convert.ObjectToOptionalConverter"
+        x="455" y="733">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -322,20 +218,10 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.core.Ordered"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.BeanInfoFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyMatches" x="519" y="295">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyEditorRegistry"
-        x="267" y="-180">
+    <Class name="com.zghw.spring.demo.core.convert.ConditionalConverter"
+        x="204" y="-32">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -344,18 +230,8 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanWrapperImpl" x="-1" y="226">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.BeanWrapper"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.AbstractNestablePropertyAccessor"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.ExtendedBeanInfo" x="-30" y="544">
+    <Class name="com.zghw.spring.demo.core.convert.ConversionService"
+        x="-128" y="-398">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -364,7 +240,9 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.DirectFieldAccessor" x="247" y="256">
+    <Class
+        name="com.zghw.spring.demo.core.convert.ObjectToObjectConverter"
+        x="-127" y="463">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -372,9 +250,70 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.AbstractNestablePropertyAccessor"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyComparator" x="401" y="429">
+    <Class
+        name="com.zghw.spring.demo.core.convert.GenericConversionService"
+        x="-145" y="-193">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConfigurableConversionService"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.DefaultConversionService"
+        x="-139" y="-115">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.GenericConversionService"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.CollectionToObjectConverter"
+        x="-230" y="349">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.NumberToNumberConverterFactory"
+        x="670" y="-265">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConverterFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ArrayToObjectConverter"
+        x="776" y="636">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.TypeDescriptor"
+        x="-32" y="-10">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -383,7 +322,9 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.core.AttributeAccessor" x="208" y="-580">
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToCharacterConverter"
+        x="909" y="1101">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -391,5 +332,264 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.MapToMapConverter"
+        x="-185" y="418">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ObjectToArrayConverter"
+        x="-232" y="264">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.CollectionToArrayConverter"
+        x="661" y="696">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.IdToEntityConverter"
+        x="1" y="570">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.PropertiesToStringConverter"
+        x="-243" y="958">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.SerializingConverter"
+        x="960" y="1239">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.CollectionToCollectionConverter"
+        x="215" y="726">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.ConverterFactory"
+        x="465" y="-397">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.ConvertingComparator"
+        x="-205" y="83">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.convert.ByteBufferConverter"
+        x="850" y="572">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ConfigurableConversionService"
+        x="-162" y="-291">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConverterRegistry"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConversionService"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.CharacterToNumberFactory"
+        x="439" y="-244">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConverterFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToBooleanConverter"
+        x="929" y="1174">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToEnumConverterFactory"
+        x="270" y="-199">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConverterFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ZoneIdToTimeZoneConverter"
+        x="872" y="957">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToCollectionConverter"
+        x="975" y="328">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"
+        x="341" y="157">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.GenericConverter"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.EnumToStringConverter"
+        x="-343" y="1084">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToNumberConverterFactory"
+        x="565" y="-203">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConverterFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.StringToPropertiesConverter"
+        x="310" y="800">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.CollectionToStringConverter"
+        x="-100" y="515">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.ConditionalGenericConverter"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.convert.DeserializingConverter"
+        x="-289" y="1020">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.convert.Converter"/>
     </Class>
 </ClassDiagram>

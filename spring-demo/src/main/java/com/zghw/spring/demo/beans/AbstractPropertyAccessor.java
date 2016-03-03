@@ -1,5 +1,5 @@
 package com.zghw.spring.demo.beans;
 
-public class AbstractPropertyAccessor extends TypeConverterSupport implements ConfigurablePropertyAccessor {
+public abstract class AbstractPropertyAccessor extends TypeConverterSupport implements ConfigurablePropertyAccessor {
 
 }

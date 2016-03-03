@@ -9,7 +9,7 @@ import com.zghw.spring.demo.core.core.source.ApproximableList;
 
 /**
  * 通过集合类型创建常用的集合对象
- * 用处：Map.class List.class 等常用集合类型转换为对象 Map  List  
+ * 用处：使用Map.class List.class等常用集合类型生产对象Map List等集合对象 
  * @author zghw
  *
  */

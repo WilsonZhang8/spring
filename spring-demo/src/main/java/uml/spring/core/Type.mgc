@@ -33,7 +33,7 @@
     </Class>
     <Class
         name="com.zghw.spring.demo.core.core.type.AbstractRecursiveAnnotationVisitor"
-        x="212" y="563">
+        x="102" y="567">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -91,7 +91,7 @@
     </Class>
     <Class
         name="com.zghw.spring.demo.core.core.type.RecursiveAnnotationAttributesVisitor"
-        x="46" y="640">
+        x="-64" y="644">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -100,6 +100,17 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AbstractRecursiveAnnotationVisitor"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.core.core.type.MetadataReaderFactory"
+        x="-21" y="-295">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
     </Class>
     <Class
         name="com.zghw.spring.demo.core.core.type.StandardMethodMetadata"
@@ -114,19 +125,8 @@
         <Extension destinationClassName="com.zghw.spring.demo.core.core.type.MethodMetadata"/>
     </Class>
     <Class
-        name="com.zghw.spring.demo.core.core.type.MetadataReaderFactory"
-        x="-21" y="-295">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class
         name="com.zghw.spring.demo.core.core.type.AnnotationAttributesReadingVisitor"
-        x="49" y="731">
+        x="-61" y="735">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -135,9 +135,12 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.core.core.type.RecursiveAnnotationAttributesVisitor"/>
+        <Association
+            destinationClassName="com.zghw.spring.demo.core.core.type.AnnotationMetadataReadingVisitor"
+            endpointName="AnnotationMetadataReadingVisitor" kind="Simple"/>
     </Class>
     <Class name="com.zghw.spring.demo.core.core.type.AnnotationVisitor"
-        x="275" y="475">
+        x="165" y="479">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -208,7 +211,7 @@
     </Class>
     <Class
         name="com.zghw.spring.demo.core.core.type.RecursiveAnnotationArrayVisitor"
-        x="419" y="646">
+        x="309" y="650">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -322,8 +325,8 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotatedTypeMetadata"/>
         <Extension destinationClassName="com.zghw.spring.demo.core.core.type.StandardClassMetadata"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.core.type.AnnotationMetadata"/>
     </Class>
     <Class name="com.zghw.spring.demo.core.core.type.ClassMetadata"
         x="147" y="26">

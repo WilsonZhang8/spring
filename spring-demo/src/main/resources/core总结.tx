@@ -1,0 +1,55 @@
+spring 源码研究总结
+core主要功能点：
+1.spring基础设施工具类
+2.解析类元数据（Metadata）
+3.底层Resource资源描述及基本资源加载器实现
+4.Property管理
+5.类型转换服务
+6.spring环境搭建
+
+功能实现：
+1.spring基础设施主要工具类
+ClassUtils ：Class的类加载 、查找类全部信息、类信息的处理等
+ObjectUtilsTest：基本类型的比较或数组比较，如果认为两个数组是相等的
+PatternMatchUtils：模式匹配 xx 模式匹配 * 、*xx 、*xx* 、xx* 、*xx*y 
+PropertyPlaceholderHelper:解析文本中占位符并替换成属性值
+ReflectionUtils：非常好用的反射类，得到字段、方法及过滤方法和方法回调
+ResourceUtils：这个解析定位资源非常好用 比如 classpath--URL-->File
+SerializationUtils：序列化工具
+SystemPropertyUtils:使用系统环境变量值替换占位符来生成字符串
+AnnotationUtils:注解工具类 想要解析注解请找它，绝对给力。
+BridgeMethodResolver：判断是否是桥梁方法 把桥梁方法转化为正常方法
+CollectionFactory：使用Map.class List.class等常用集合类型生产对象Map List等集合对象
+Constants：加载类中的public static final常量进行分析其信息 查找 转换等
+Conventions：根据方法返回值 、 字段、返回相应的字符串类型名称，可以用以自动化给其起别名
+ControlFlowFactory：栈轨迹信息查询 判断 类 方法 及输入值是否在栈的轨迹中
+MethodIntrospector：为类中相关方法注入数据或过滤、把类中的相应的代理方法转化为接口方法
+ResolvableType：统一所有类型为ResolvableType对象来操作类型，很赞，使用很方便
+还有其他很赞的工具类可以使用。
+
+2.解析类元数据
+类中的元数据
+包含了类元数据、方法元数据及注解元数据
+spring使用了两种方式来注入元数据获得类、注解、方法元数据信息
+ 1.使用ASM方式
+ 2.使用标准的反射
+ASM方式通过加载class资源读取到相应的访问器里，来填充相应的元数据。使用了访问器模式。
+使用标准的反射方式从Class对象获取类、方法、字段、注解等信息注入到元数据中。
+ClassMetadata接口装载类元数据，使用ClassMetadataReadingVisitor从ASM中取出类元数据填充ClassMetadata
+还可以使用StandardClassMetadata从反射中取的元数据填充
+AnnotationMedata接口不仅装载类元数据，还装载所有注解元素，使用AnnotationMetadataReadingVisitor从ASM中
+取出类元数据和注解元数据填充到AnnotationMedata中，还可以使用StandardAnnotationMedata从反射中取的元数据填充
+AnnotatdTypeMedata接口定义被注解的类型(这里包括了类及方法)上的所有注解信息，它获取直接使用反射
+MethodMedata接口和AnnotationMedata接口都继承它，MethodMedata装载了方法元数据，
+使用MethodMetadataReadingVisitor从ASM中访问得到元数据填充。还可以使用StandardMethodMedata
+从反射中取的元数据填充
+AnnotationAttributesReadingVisitor全部都是作为访问一个注解属性对象返回给了AnnotationMetadataReadingVisitor访问器中
+
+spring使用了工厂MetadataReaderFactory来创建元数据读取器MetadataReader，工厂需要的io资源是资源定位路径或Resource对象，
+而创建的MetadataReader则包含了ClassMetada和AnnotationMetada供使用。它使用的ASM方式来获取的元数据，ASM方式要比反射速度快很多。
+
+当然除了生产Metadata，spring还设计过滤器TypeFilter来过滤工厂中的Metadata数据， 使用了模板方法
+1.RegexPatternTypeFilter使用正则模式来过滤需要的Metadata
+2.AssignableTypeFilter使用类型层次来过滤需要的Metadata
+3.AnnotationTypeFilter过滤掉非此annotation类型的Metadata
+
