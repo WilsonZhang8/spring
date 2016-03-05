@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ClassDiagram>
-    <Class
-        name="com.zghw.spring.demo.beans.ArgumentConvertingMethodInvoker"
-        x="367" y="498">
+    <Class name="com.zghw.spring.demo.beans.BeanMetadataElement" x="399" y="-578">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -11,7 +9,9 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanMetadataElement" x="620" y="-583">
+    <Class
+        name="com.zghw.spring.demo.beans.ArgumentConvertingMethodInvoker"
+        x="367" y="498">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -46,7 +46,9 @@
         <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistry"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyAccessor"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PagedListHolder" x="441" y="362">
+    <Class
+        name="com.zghw.spring.demo.beans.GenericTypeAwarePropertyDescriptor"
+        x="-72" y="596">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -56,7 +58,7 @@
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
     <Class name="com.zghw.spring.demo.beans.BeanMetadataAttribute"
-        x="727" y="-465">
+        x="506" y="-460">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -66,9 +68,16 @@
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.BeanMetadataElement"/>
     </Class>
-    <Class
-        name="com.zghw.spring.demo.beans.GenericTypeAwarePropertyDescriptor"
-        x="-72" y="596">
+    <Class name="com.zghw.spring.demo.beans.PagedListHolder" x="441" y="362">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.beans.BeanInfoFactory" x="-73" y="356">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -89,7 +98,7 @@
         <Extension destinationClassName="com.zghw.spring.demo.beans.TypeConverter"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistrySupport"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.BeanInfoFactory" x="-73" y="356">
+    <Class name="com.zghw.spring.demo.beans.PropertyAccessor" x="12" y="-182">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -100,15 +109,6 @@
     </Class>
     <Class name="com.zghw.spring.demo.beans.TypeConverterDelegate"
         x="772" y="-73">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-    </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyAccessor" x="12" y="-182">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -137,7 +137,7 @@
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.TypeConverterSupport"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.Mergeable" x="912" y="-339">
+    <Class name="com.zghw.spring.demo.beans.Mergeable" x="818" y="-398">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -148,7 +148,7 @@
     </Class>
     <Class
         name="com.zghw.spring.demo.beans.BeanMetadataAttributeAccessor"
-        x="464" y="-463">
+        x="243" y="-458">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -188,7 +188,7 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyValues" x="918" y="-526">
+    <Class name="com.zghw.spring.demo.beans.PropertyValues" x="786" y="-580">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -231,7 +231,7 @@
         <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyEditorRegistry"/>
     </Class>
     <Class name="com.zghw.spring.demo.beans.MutablePropertyValues"
-        x="892" y="-406">
+        x="760" y="-460">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -241,7 +241,7 @@
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.PropertyValues"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyValue" x="532" y="-385">
+    <Class name="com.zghw.spring.demo.beans.PropertyValue" x="311" y="-380">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -251,17 +251,6 @@
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.BeanMetadataAttributeAccessor"/>
     </Class>
-    <Class name="com.zghw.spring.demo.core.AttributeAccessorSupport"
-        x="179" y="-456">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.core.AttributeAccessor"/>
-    </Class>
     <Class name="com.zghw.spring.demo.core.Ordered" x="113" y="349">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
@@ -270,6 +259,17 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.core.AttributeAccessorSupport"
+        x="-42" y="-451">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.core.AttributeAccessor"/>
     </Class>
     <Class name="com.zghw.spring.demo.beans.SortDefinition" x="752" y="347">
         <AttributesDisplayFilter public-accepted="true"
@@ -290,17 +290,6 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.MutableSortDefinition"
-        x="722" y="475">
-        <AttributesDisplayFilter public-accepted="true"
-            private-accepted="true" protected-accepted="true"
-            default-accepted="true" static-accepted="false"/>
-        <MethodDisplayFilter public-accepted="true"
-            private-accepted="false" protected-accepted="false"
-            default-accepted="false" static-accepted="false"
-            accessors-accepted="false" constructors-accepted="false"/>
-        <Extension destinationClassName="com.zghw.spring.demo.beans.SortDefinition"/>
-    </Class>
     <Class
         name="com.zghw.spring.demo.beans.AbstractNestablePropertyAccessor"
         x="192" y="165">
@@ -312,6 +301,17 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.AbstractPropertyAccessor"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.beans.MutableSortDefinition"
+        x="722" y="475">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.SortDefinition"/>
     </Class>
     <Class name="com.zghw.spring.demo.beans.ExtendedBeanInfoFactory"
         x="-42" y="487">
@@ -374,7 +374,7 @@
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="com.zghw.spring.demo.beans.AbstractNestablePropertyAccessor"/>
     </Class>
-    <Class name="com.zghw.spring.demo.beans.PropertyComparator" x="401" y="429">
+    <Class name="com.zghw.spring.demo.core.AttributeAccessor" x="-13" y="-575">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -383,7 +383,7 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="com.zghw.spring.demo.core.AttributeAccessor" x="208" y="-580">
+    <Class name="com.zghw.spring.demo.beans.PropertyComparator" x="401" y="429">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
