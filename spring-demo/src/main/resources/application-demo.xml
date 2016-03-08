@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+            <description>这个是描述</description>
+           <!-- 
+           <import resource=""/>
+            <alias name="" alias=""/>
+           <beans></beans>
+            --> 
+     <bean id="webSite1" class="com.zghw.spring.demo.demo.WebSite">
+	</bean> 
+	<bean id="webSite2" class="com.zghw.spring.demo.demo.WebSite">
+	</bean>
+	<bean id="webSite3" class="com.zghw.spring.demo.demo.WebSite">
+	</bean>
+	
+	 <bean id="car1" class="com.zghw.spring.demo.demo.Car">
+	</bean>
+	 <bean id="car2" class="com.zghw.spring.demo.demo.Car">
+	</bean> 
+	<!-- scope的使用 默认情况下，scope是sington即调用该对象是全局唯一 prototype每次访问都是最新的对象 -->
+	<bean id="user1" class="com.zghw.spring.demo.demo.User" scope ="prototype">
+		<property name="cardID" value="4110XXXXXXXXXX"/>
+		<property name="name" value="zhxxxxx"/>
+		<property name="age" value="111"/>
+	</bean>
+	<bean id="user" class="com.zghw.spring.demo.demo.User">
+	<!-- 基本类型注入 -->
+		<property name="cardID" value="411024198902151655"/>
+		<property name="name" value="zhangsan"/>
+		<property name="age" value="27"/>
+		<property name="money" value="333333.33"></property>
+		<property name="isMarried" value="false"/>
+		<!-- 数组类型注入 -->
+		<property name="arrayWebSite">
+			<array value-type="com.zghw.spring.demo.demo.WebSite">
+			<!-- 内部bean,和外部的bean不冲突 -->
+				<bean id="webSite1" class="com.zghw.spring.demo.demo.WebSite">
+				</bean>
+				<bean id="webSite2" class="com.zghw.spring.demo.demo.WebSite">
+				</bean>
+				<bean id="webSite3" class="com.zghw.spring.demo.demo.WebSite">
+				</bean>
+			</array>
+		</property>
+		<!-- 集合数据注入 -->
+		<property name="listCar">
+			<list>
+			<ref bean="car1"/>
+			<ref bean="car2"/>
+			</list>
+		</property>
+		<property name="registedWebSite">
+		<!-- map注入 -->
+			<map>
+				<entry>
+					<key><value>"wwww.baidu.com"</value></key>
+					<ref bean="webSite1"/>
+				</entry>
+				<entry>
+					<key><value>"wwww.google.com"</value></key>
+					<ref bean="webSite2"/>
+				</entry>
+				<entry>
+					<key><value>"wwww.facebook.com"</value></key>
+					<ref bean="webSite3"/>
+				</entry>
+			</map>
+		</property>
+		<!-- 枚举类型注入 -->
+		<property name="fruit" value="APPLE"></property>
+		<!-- 使用SPEL引用其他bean属性值或者调用方法都行作为值 给力哦 也可以使用三维运算符 ？ ： -->
+		<property name="mapProp">
+		<props>
+			<prop key="#{user1.cardID}">
+			"#{user1.getName()}"
+			</prop>
+			<prop key="#{user1.name}">"#{user1.getAge()}"</prop>
+		</props>
+		</property>
+		<!-- 使用SPEL引入静态方法返回值作为值 -->
+		<!-- <property name="systemProp" value="#{T(com.zghw.spring.demo.demo.User).getProperties()}"></property>
+		<property name="systemProp" value="#{T(java.lang.System).getProperties()}">
+		</property> -->
+		<property name="birthday" value="<null>"></property>
+		<!-- Class类型注入 -->
+		<property name="clazz" value="com.zghw.spring.demo.demo.User"></property>
+		<!-- 属性包含当前User对象 -->
+		<property name="userChild" ref="user1"></property>
+		
+	</bean>    
+	    
+</beans> 
