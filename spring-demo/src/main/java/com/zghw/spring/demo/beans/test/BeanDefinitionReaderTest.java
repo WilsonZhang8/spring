@@ -32,6 +32,8 @@ public class BeanDefinitionReaderTest {
 		 * AbstractBeanDefinitionReader抽象类实现BeanDefinitionReader大部分工作，并且实现了EnvironmentCapable运行环境属性
 		 * 提供了共同的属性,比如bean工厂工作和使用的类加载器加载bean类。
 		 * 他通过构造方法参数BeanDefinitionRegistry来创建该对象，使读到的BeanDefinition注入到注册器中
+		 * XmlBeanDefinitionReader类继承了AbstractBeanDefinitionReader
+		 * 它主要把工作委托给BeanDefinitionDocumentReader来工作
 		 * 
 		 * PropertiesBeanDefinitionReader继承了AbstractBeanDefinitionReader
 		 * 这个读取器可以读取属性格式的BeanDefinition
