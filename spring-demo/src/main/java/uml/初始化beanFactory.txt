@@ -1,0 +1,31 @@
+getBean
+1.给定beanname进行判断是否包含&如果有就去掉后面的
+2.从别名系统中查询该名字的真实名称。
+3.先从单例注册表中查是否由注册过的
+如果有注册过的，从注册表中查询，可能来自于FactoryBean
+如果没有则查找父工厂，如果父工厂存在，并且本工厂又不包含该beanname的定义则
+调用父工厂查询
+如果本工厂存在该beanname，则首先从合并的缓存中查找RootBeanDefinition,
+如果缓存中存在则返回，
+mergedBeanDefinitions 缓存合并过的RootBeanDefinition key =beanname
+value=缓存合并过的RootBeanDefinition
+否则通过子类实现：使用beanName查询BeanDefinition
+
+如果查询的BeanDefinition没有父名称即没有依赖父的bean对象，并且是RootBeanDefinition类型，则使用clone该对象赋给合并对象mbd
+如果不是RootBeanDefinition实例，则使用new RootBeanDefinition(bd)
+创建一个mbd
+
+如果有parentName,并且beanName不等于parentName，则循环父依赖。
+如果有parentName,并且beanName等于parentName，则使用父工厂处理依赖。
+查询出来的父pbd则进行深度拷贝，来创建RootBeanDefinition
+然后使用bd重写pbd，如果合并后的RootBeanDefinition没有scope则设置singleton
+
+得到对应的RootBeanDefinition后，
+查询RootBeanDefinition下的所有依赖，使用此方法
+如果是单例就查询该bean,注册到单例表中
+如果是原型就使用原型处理
+
+
+
+
+

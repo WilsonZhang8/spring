@@ -12,6 +12,7 @@ public class User {
 	private int age;
 	private double money;
 	private boolean isMarried;
+	private int[] soso;
 	private WebSite[] arrayWebSite;
 	private List<Car> listCar;
 	private Map<String,WebSite> registedWebSite;
@@ -21,6 +22,11 @@ public class User {
 	private Date birthday;
 	private Class clazz;
 	private User userChild;
+	private Computer computer;
+	
+	public User(){
+		System.out.println("我是user 默认构造");
+	}
 	
 	public static Properties getProperties(){
 		return System.getProperties();
@@ -113,16 +119,32 @@ public class User {
 		this.mapProp = mapProp;
 	}
 
+	public Computer getComputer() {
+		return computer;
+	}
+
+	public void setComputer(Computer computer) {
+		this.computer = computer;
+	}
+
+	public int[] getSoso() {
+		return soso;
+	}
+
+	public void setSoso(int[] soso) {
+		this.soso = soso;
+	}
+
 	@Override
 	public String toString() {
 		return "User [cardID=" + cardID + ", name=" + name + ", age=" + age
-				+ ", money=" + money + ", isMarried=" + isMarried
-				+ ", arrayWebSite=" + Arrays.toString(arrayWebSite)
-				+ ", listCar=" + listCar + ", registedWebSite="
-				+ registedWebSite + ", fruit=" + fruit + ", systemProp="
-				+ systemProp + ", mapProp=" + mapProp + ", birthday="
-				+ birthday + ", clazz=" + clazz + ", userChild=" + userChild
-				+ "]";
+				+ ", money=" + money + ", isMarried=" + isMarried + ", soso="
+				+ Arrays.toString(soso) + ", arrayWebSite="
+				+ Arrays.toString(arrayWebSite) + ", listCar=" + listCar
+				+ ", registedWebSite=" + registedWebSite + ", fruit=" + fruit
+				+ ", systemProp=" + systemProp + ", mapProp=" + mapProp
+				+ ", birthday=" + birthday + ", clazz=" + clazz
+				+ ", userChild=" + userChild + ", computer=" + computer + "]";
 	}
 
 }

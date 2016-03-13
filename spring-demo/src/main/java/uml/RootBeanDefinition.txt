@@ -1,0 +1,26 @@
+allowCaching 是否可以被缓存 默认是可以的，通过查询类的访问是否是不同的类加载器来确定
+BeanDefinitionHolder 持有了一个BeanDefinition及对应的名称和别名
+targetType 对应bean的目标类型
+isFactoryMethodUnique 工厂方法是否是唯一的
+constructorArgumentLock 构造参数锁对象
+resolvedConstructorOrFactoryMethod 解析过的构造方法或者工厂方法对象，可以判断是否被解析过
+resolvedFactoryMethodReturnType 解析过的方法返回类型
+constructorArgumentsResolved 构造参数是否标记过已经被解析过，默认是false
+resolvedConstructorArguments 被进行过的构造参数对象
+preparedConstructorArguments 准备解析的构造参数对象
+postProcessingLock 正在后置处理的锁对象
+postProcessed 是否已经MergedBeanDefinitionPostProcessor后置处理过 默认为false
+beforeInstantiationResolved 在before-instantiation post-processor 解析过
+externallyManagedConfigMembers 内部管理配置反射成员集合
+externallyManagedInitMethods	内部管理初始化的方法集合
+externallyManagedDestroyMethods 内部管理销毁方法集合
+
+
+
+
+
+
+
+
+
+

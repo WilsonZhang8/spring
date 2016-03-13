@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.config.BeanDefinition"
+        x="190" y="651">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.config.SingletonBeanRegistry"
+        x="697" y="120">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.SimpleBeanDefinitionRegistry"
+        x="118" y="566">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.BeanDefinitionRegistry"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.GenericBeanDefinition"
+        x="242" y="875">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.AbstractBeanDefinition"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.AbstractAutowireCapableBeanFactory"
+        x="412" y="437">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.AbstractBeanFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.AutowireCapableBeanFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.HierarchicalBeanFactory"
+        x="444" y="124">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.BeanFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.DefaultSingletonBeanRegistry"
+        x="676" y="247">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.SingletonBeanRegistry"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.config.ConfigurableBeanFactory"
+        x="442" y="249">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.HierarchicalBeanFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.SingletonBeanRegistry"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.annotation.AnnotatedBeanDefinition"
+        x="67" y="764">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.BeanDefinition"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.StaticListableBeanFactory"
+        x="-98" y="388">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.ListableBeanFactory"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.beans.factory.BeanFactory" x="200" y="8">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.zghw.spring.demo.beans.factory.ListableBeanFactory"
+        x="-74" y="118">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.BeanFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.AbstractBeanDefinition"
+        x="288" y="764">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.BeanDefinition"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.ChildBeanDefinition"
+        x="579" y="880">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.AbstractBeanDefinition"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.config.AutowireCapableBeanFactory"
+        x="157" y="121">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.BeanFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.DefaultListableBeanFactory"
+        x="446" y="571">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.AbstractAutowireCapableBeanFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.BeanDefinitionRegistry"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.ConfigurableListableBeanFactory"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.BeanDefinitionRegistry"
+        x="143" y="462">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.annotation.AnnotatedGenericBeanDefinition"
+        x="-24" y="874">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.GenericBeanDefinition"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.annotation.AnnotatedBeanDefinition"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.FactoryBeanRegistrySupport"
+        x="684" y="347">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.DefaultSingletonBeanRegistry"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.AbstractBeanFactory"
+        x="461" y="337">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.ConfigurableBeanFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.FactoryBeanRegistrySupport"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.support.RootBeanDefinition"
+        x="410" y="877">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.support.AbstractBeanDefinition"/>
+    </Class>
+    <Class
+        name="com.zghw.spring.demo.beans.factory.config.ConfigurableListableBeanFactory"
+        x="135" y="258">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.ListableBeanFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.ConfigurableBeanFactory"/>
+        <Extension destinationClassName="com.zghw.spring.demo.beans.factory.config.AutowireCapableBeanFactory"/>
+    </Class>
+</ClassDiagram>

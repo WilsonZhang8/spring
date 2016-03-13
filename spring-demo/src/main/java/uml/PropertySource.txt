@@ -1,0 +1,25 @@
+/**
+ * PropertySource 抽象类主要是一对name/value值
+ * 它对euqals方法进行了重写 主要比较name属性是否相等 用于在集合中比较PropertySource对象
+ * 其中named()方法返回了一个值名称，value为空的PropertySource对象用于集合比较
+ * 它定了抽象方法public abstract Object getProperty(String name);
+ * 子类来实现得到拥有的value对象
+ * 这是模板方法的实现
+ * JndiPropertySource实现了PropertySource抽象类
+ * jndi的lookfor来查找属性值
+ * EnumerablePropertySource继承PropertySource 它是一个抽象类
+ * 它定义了value是一个可数的对象，比如一个map集合
+ * 它定了抽象方法public abstract String[] getPropertyNames();
+ * 子类来实现得到value对象的集合名称
+ * EnumerablePropertySource子类分三种：
+ * 1.组合PropertySource的CompositePropertySource
+ * 2.常用map类型的MapPropertySource
+ * 3.来自命令参数CommandLinePropertySource
+ * 其中 MapPropertySource 下的子类 有PropertiesPropertySource和SystemEnvironmentPropertySource
+ * PropertiesPropertySource用于来自Properties对象key/value 它有一个子类ResourcePropertySource
+ * ResourcePropertySource可以把Resource资源文件转换为PropertySource资源，它可以使用不同的Resource实现类
+ * 来创建
+ * SystemEnvironmentPropertySource 它处理环境参数转化为PropertySource对象，比如System.getenv()中的参数
+ * 
+ * 以上PropertySource分别从比较PropertySource、Map、Properties、环境变量、资源文件、JDNI和合并多个PropertySource来实现。
+ */

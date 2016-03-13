@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
+            >
+            <description>这个是描述</description>
+           <!-- 
+           <import resource=""/>
+            <alias name="" alias=""/>
+           <beans></beans>
+            --> 
+            
+	<!-- parent="user" 拷贝user对应的bean属性配置，则可以重写与user不同的属性及配置，使用相同的属性及配置创建bean对象 -->
+	<bean id="userSub" class="com.zghw.spring.demo.demo.User" parent="user" scope="prototype">
+		<property name="name" value="override"/>
+		<property name="soso">
+		<!-- merge="true" 对于引用parent，如果子bean要使用父bean的数组 集合或者map等则需要使用merge=“true”， 
+		否则会覆盖父类数组中的全部元素 -->
+			<array value-type="int" merge="true">
+				<value>5555</value>
+			</array>
+		</property>
+	</bean>
+	
+	<!--abstract="true" 定义为抽象的bean则不会创建该对象的实例，在创建bean之前，会检查到时抽象的就不会创建该bean实例 -->
+	<bean id="abstractBean" class="com.zghw.spring.demo.demo.AbstractBean" abstract="true">
+		<constructor-arg name="name" type="String" index="0" value="zhangsan"></constructor-arg>
+		<constructor-arg name="count" type="int" index="1" value="23"></constructor-arg>
+	</bean>	
+	
+	<!--depends-on="userSub,carFactory"依赖于其他bean对象，在依赖的bean一个个创建完成后
+	才创建该bean。依赖于多个就使用逗号分开 -->
+	<bean id="relationBean" class="com.zghw.spring.demo.demo.RelationBean" depends-on="userSub,carFactory" ></bean>	
+	
+	<!-- bean的作用范围：scope的使用 默认情况下，scope是sington即调用该对象是全局唯一 prototype每次访问都是最新的对象 -->
+	<!-- name作为bean名称 -->
+	<bean name="user1" class="com.zghw.spring.demo.demo.User" scope ="prototype">
+		<property name="cardID" value="4110XXXXXXXXXX"/>
+		<property name="name" value="zhxxxxx"/>
+		<property name="age" value="111"/>
+	</bean>
+	
+	<bean id="webSite1" class="com.zghw.spring.demo.demo.WebSite">
+	</bean> 
+	<bean id="webSite2" class="com.zghw.spring.demo.demo.WebSite" scope="prototype">
+	</bean>
+	<!-- 默认构造参数 -->
+	<bean id="webSite3" class="com.zghw.spring.demo.demo.WebSite">
+	</bean>
+	 <bean id="car" class="com.zghw.spring.demo.demo.Car" scope ="prototype">
+	 <!-- 构造器的使用
+	 	name 参数名称 | type 参数类型 | index 参数位置从0开始 | value 参数值 构造器元素下可以放集合 数组 或引用bean等
+	  -->
+	 <constructor-arg name="name" type="java.lang.String" index="0" value="audi"></constructor-arg>
+	 <constructor-arg name="price" type="double" index="1" value="2456546.22"></constructor-arg>
+	</bean>
+	<!-- 
+		静态工厂方法创建实例 
+		factory-method 静态的工厂方法名字 
+		constructor-arg静态的工厂方法参数
+	 -->	
+	<bean id="carFactory" class="com.zghw.spring.demo.demo.CarFactory" factory-method="getInstance" scope ="prototype">
+		<constructor-arg name="factoryName" type="java.lang.String" value="static factory method"></constructor-arg>
+	</bean>
+	<!-- 动态工厂方式创建对象
+		factory-bean 工厂对象
+		factory-method 工厂方法名字 
+		constructor-arg 工厂方法参数
+	 -->
+ 	<bean id="carSub" class="com.zghw.spring.demo.demo.CarSub" scope ="prototype" factory-bean="carFactory" factory-method="getCar">
+ 		 <constructor-arg name="namefactory" type="java.lang.String"  value="AAAAAA"></constructor-arg>
+	 	 <constructor-arg name="countfactory" type="int" value="11122"></constructor-arg>
+ 	</bean>
+ 	
+ 	<!--autowire属性，控制是否自动注入bean对象的字段值，默认是不自动注入
+	1.autowire="no",不自动注入
+	2.autowire="byName",根据bean的字段值名称匹配bean集合中名称相同的bean对象进行注入
+	3.autowire="byType" 根据bean的字段值类型匹配bean集合中类型相同的bean对象进行注入，
+	如果有多个相同类型，会失败,可以指定相应多个bean中一个bean为primary主选
+	4.autowire="constructor"
+	 -->
+ 	<!-- init-method="init" destroy-method="destroy" 定义了bean创建前使用的方法和销毁前使用的方法 -->
+	<bean id="relationBean1" class="com.zghw.spring.demo.demo.RelationBean" depends-on="userSub,carFactory" 
+	autowire="byType" init-method="init" destroy-method="destroy" scope="singleton" ></bean>	
+	<bean id="userDependency" class="com.zghw.spring.demo.demo.User"></bean>
+	<!-- 给bean起别名 -->
+	<alias name="user1" alias="uuu"/>
+	<!-- 级联别名的使用 ws关联webSite1 ss又关联ws wss又关联ss -->
+	<alias name="webSite1" alias="ws"/>
+	<alias name="ws" alias="ss"/>
+	<alias name="ss" alias="wss"/>
+	
+	<!-- primary="true" 表示如果有多个bean匹配到则使用当前的作为主bean，优先选择
+		默认primary=false
+		id作为bean名称 -->
+	<bean id="user" class="com.zghw.spring.demo.demo.User" primary="true">
+	<!-- 基本类型注入 -->
+		<property name="cardID" value="411024198902151655"/>
+		<property name="name" value="zhangsan"/>
+		<property name="age" value="27"/>
+		<property name="money" value="333333.33"></property>
+		<property name="isMarried" value="false"/>
+		<!-- 属性是一个引用，包含当前User对象 -->
+		<property name="userChild" ref="user1"></property>
+		<!-- 属性是一个bean -->
+		<property name="computer">
+			<bean id="cp" class="com.zghw.spring.demo.demo.Computer">
+				<property name="cs">
+				<!-- 属性中引用其他bean -->
+					<ref bean="carSub" />
+					<!--使用idref和上面效果一样
+					<idref bean="relationBean"/> 
+					 -->
+				</property>
+				<property name="cs1">
+					<!--区分null属性  -->
+					<null></null>
+				</property>
+			</bean>
+		</property>
+		
+		<property name="arrayWebSite">
+		<!-- 数组类型注入 -->
+			<array value-type="com.zghw.spring.demo.demo.WebSite">
+			<!-- 内部bean,和外部的bean不冲突 -->
+				<bean id="webSite1" class="com.zghw.spring.demo.demo.WebSite">
+				</bean>
+				<bean id="webSite2" class="com.zghw.spring.demo.demo.WebSite">
+				</bean>
+				<bean id="webSite3" class="com.zghw.spring.demo.demo.WebSite">
+				</bean>
+			</array>
+		</property>
+		<property name="soso">
+			<array value-type="int">
+				<value>11111</value>
+				<value>2222</value>
+				<value>333</value>
+			</array>
+		</property>
+		<meta key="we" value="22"/>
+		<!-- 集合数据注入 -->
+		<property name="listCar">
+			<list value-type="com.zghw.spring.demo.demo.Car">
+			<ref bean="car"/>
+			 <bean id="car" class="com.zghw.spring.demo.demo.Car">
+				 <!-- 构造器的使用 -->
+				 <constructor-arg name="name" type="java.lang.String" index="0" value="audi1"></constructor-arg>
+				 <constructor-arg name="number" type="java.lang.String" index="1" value="xxxx"></constructor-arg>
+				 <constructor-arg name="brand" type="java.lang.String" index="2" value="DsAuto"></constructor-arg>
+				</bean>
+			</list>
+		</property>
+		<property name="registedWebSite">
+		<!-- map注入 -->
+			<map key-type="java.lang.String" value-type="com.zghw.spring.demo.demo.WebSite">
+				<entry>
+					<key><value>"wwww.baidu.com"</value></key>
+					<ref bean="webSite1"/>
+				</entry>
+				<entry>
+					<key><value>"wwww.google.com"</value></key>
+					<ref bean="webSite2"/>
+				</entry>
+				<entry key="wwww.facebook.com" value-ref="webSite3">
+				</entry>
+			</map>
+		</property>
+		<!-- 枚举类型注入 -->
+		<property name="fruit" value="APPLE"></property>
+		<!-- 使用SPEL引用其他bean属性值或者调用方法都行作为值 给力哦 也可以使用三维运算符 ？ ： -->
+		<property name="mapProp">
+		<props>
+			<prop key="#{user1.cardID}">
+			"#{user1.getName()}"
+			</prop>
+			<prop key="#{user1.name}">"#{user1.getAge()}"</prop>
+		</props>
+		</property>
+		<!-- 使用SPEL引入静态方法返回值作为值 -->
+		<!-- <property name="systemProp" value="#{T(com.zghw.spring.demo.demo.User).getProperties()}"></property>
+		<property name="systemProp" value="#{T(java.lang.System).getProperties()}">
+		</property> -->
+		<!-- Class类型注入 -->
+		<property name="clazz" value="com.zghw.spring.demo.demo.User"></property>
+		
+	</bean>    
+	    <!-- 枚举类型不需要 
+	    <bean id="fruit" class="com.zghw.spring.demo.demo.Fruit"></bean>
+	    -->
+	    <bean id="computer" class="com.zghw.spring.demo.demo.Computer"></bean>
+</beans> 
