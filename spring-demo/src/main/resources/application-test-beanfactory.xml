@@ -13,8 +13,9 @@
             --> 
             
 	<!-- parent="user" 拷贝user对应的bean属性配置，则可以重写与user不同的属性及配置，使用相同的属性及配置创建bean对象 -->
-	<bean id="userSub" class="com.zghw.spring.demo.demo.User" parent="user" scope="prototype">
+	<bean id="userSub" class="com.zghw.spring.demo.demo.User" parent="user">
 		<property name="name" value="override"/>
+		<property name="userChild" ref="user"></property>
 		<property name="soso">
 		<!-- merge="true" 对于引用parent，如果子bean要使用父bean的数组 集合或者map等则需要使用merge=“true”， 
 		否则会覆盖父类数组中的全部元素 -->
@@ -41,7 +42,18 @@
 		<property name="name" value="zhxxxxx"/>
 		<property name="age" value="111"/>
 	</bean>
-	
+	<!--lookup-method name 方法名 bean 引入的bean对象，一个单例的对象想要包含一个或者是
+		对于遗留代码不能修改的情况下，如果该类中有个方法返回的对象不是你想要的，
+		那么你可以指定该方法，然后给出返回的值对象，spring会帮你处理，它使用
+		CGlib技术帮你生成一个类，然后覆盖该方法返回你指定的对象
+	  -->
+	  <bean id="legacy" class="com.zghw.spring.demo.demo.Legacy">
+	    	<lookup-method name="createUser" bean="user1"/>
+	    	<!-- replaced-method 替换方法 name 要替换的方法名称  replacer替换bean类需要实现MethodReplacer接口-->
+	    	<replaced-method name="temp" replacer="replaceMethodUse">
+	    	</replaced-method>
+	   </bean>
+	   <bean id="replaceMethodUse" class="com.zghw.spring.demo.demo.ReplaceMethodUse"></bean>
 	<bean id="webSite1" class="com.zghw.spring.demo.demo.WebSite">
 	</bean> 
 	<bean id="webSite2" class="com.zghw.spring.demo.demo.WebSite" scope="prototype">
@@ -105,20 +117,21 @@
 		<!-- 属性是一个引用，包含当前User对象 -->
 		<property name="userChild" ref="user1"></property>
 		<!-- 属性是一个bean -->
-		<property name="computer">
-			<bean id="cp" class="com.zghw.spring.demo.demo.Computer">
+		<!-- 循环依赖演示 -->
+		<property name="computer" ref="computer">
+			<!-- <bean id="cp" class="com.zghw.spring.demo.demo.Computer">
 				<property name="cs">
-				<!-- 属性中引用其他bean -->
+				属性中引用其他bean
 					<ref bean="carSub" />
-					<!--使用idref和上面效果一样
+					使用idref和上面效果一样
 					<idref bean="relationBean"/> 
-					 -->
+					
 				</property>
 				<property name="cs1">
-					<!--区分null属性  -->
+					区分null属性 
 					<null></null>
 				</property>
-			</bean>
+			</bean> -->
 		</property>
 		
 		<property name="arrayWebSite">
@@ -190,5 +203,9 @@
 	    <!-- 枚举类型不需要 
 	    <bean id="fruit" class="com.zghw.spring.demo.demo.Fruit"></bean>
 	    -->
-	    <bean id="computer" class="com.zghw.spring.demo.demo.Computer"></bean>
+	    <bean id="computer" class="com.zghw.spring.demo.demo.Computer" depends-on="user"></bean>
+	    <!-- Aware注入 -->
+	  <bean id="myAware" class="com.zghw.spring.demo.demo.aware.MyAware"></bean>
+	  <!-- beanFactory -->
+	  <bean id="myFactoryBean" class="com.zghw.spring.demo.demo.factorybean.MyFactoryBean"></bean>
 </beans> 

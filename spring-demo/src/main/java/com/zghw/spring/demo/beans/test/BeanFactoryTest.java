@@ -28,6 +28,7 @@ import com.zghw.spring.demo.demo.Car;
 import com.zghw.spring.demo.demo.CarFactory;
 import com.zghw.spring.demo.demo.CarSub;
 import com.zghw.spring.demo.demo.Computer;
+import com.zghw.spring.demo.demo.Legacy;
 import com.zghw.spring.demo.demo.User;
 import com.zghw.spring.demo.demo.WebSite;
 
@@ -45,8 +46,8 @@ public class BeanFactoryTest {
 			f("######################"+name+"################## ");
 			printBeanDefinition(dlbf.getBeanDefinition(name));
 		}
-		f(dlbf.getBean("userSub"));
-		dlbf.destroySingleton("userSub");
+		dlbf.getBean(Legacy.class).temp("sdfsd");
+		f("");
 	}
 	public static void printBeanDefinition(BeanDefinition bdd){
 		if(bdd instanceof GenericBeanDefinition){
