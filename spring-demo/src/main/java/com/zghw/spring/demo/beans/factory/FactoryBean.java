@@ -1,5 +1,5 @@
 package com.zghw.spring.demo.beans.factory;
 
-public interface FactoryBean<T> {
+public interface FactoryBean {
 
 }

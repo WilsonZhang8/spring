@@ -161,7 +161,7 @@ public class PropertySourceTest {
 		f("得到PropertySource包含的对象："+mps.getSource());
 		f("是否包含给定的name对应的值："+mps.containsProperty("user.dir"));
 		f("得到给定的name对应的值："+mps.getProperty("PATH"));
-		f("得到给定的name对应的PropertySource(返回的PropertySource的value值为空)："+mps.named(mps.getName()));
+		f("得到给定的name对应的PropertySource(返回的PropertySource的value值为空)："+PropertySource.named(mps.getName()));
 	}
 	//EnumerablePropertySource中定义的方法
 	private static void getEnumerablePropertiesSourceInfo(EnumerablePropertySource mps) {

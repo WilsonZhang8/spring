@@ -98,13 +98,17 @@ public class PropertyResolverEnvTest {
 		map.put("uu1", user);
 		map.put("uu2", user1);
 		map.put("uu3", null);
+		//MapPropertySource的 把map对象放入进入当成PropertySource
 		MapPropertySource mps = new MapPropertySource("mapPS", map);
+		//PropertiesPropertySource 把Properties放入当成PropertySource
 		PropertiesPropertySource pps = new PropertiesPropertySource(
 				"propertiesPS", properties);
 		String location = "classpath:test.properties";
 		String name = "resourcePS";
 		Resource resource = new DefaultResourceLoader().getResource(location);
+		//把一个Resource资源对象当成一个PropertySource
 		ResourcePropertySource rps = new ResourcePropertySource(name, resource);
+		//MutablePropertySources 用来管理包含多个PropertySources
 		MutablePropertySources propertySources = new MutablePropertySources();
 		// /放入一个MapPropertySource mps
 		propertySources.addFirst(mps);
@@ -112,6 +116,7 @@ public class PropertyResolverEnvTest {
 		propertySources.addBefore("mapPS", rps);
 		// 在尾部加入PropertiesPropertySource pps
 		propertySources.addLast(pps);
+		//创建一个P解析器
 		ConfigurablePropertyResolver crp = new PropertySourcesPropertyResolver(
 				propertySources);
 		for (PropertySource ps : propertySources) {

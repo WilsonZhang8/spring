@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValues;
-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.config.SmartInstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.MergedBeanDefinitionPostProcessor;
 import org.springframework.beans.factory.support.RootBeanDefinition;
@@ -30,7 +29,7 @@ public class MyBeanPostProcessor implements SmartInstantiationAwareBeanPostProce
 				System.out.println("sdfsd");
 				//设置不需要spring为我们实例化对象了，我们自己已经创建了， 直接返回这个给定的对象
 				isProcessAfterInstantiation=false;
-				return (Object) "我是一个string 哈哈哈! 你没被实例化我就给你返回了，和和 我代理了这个对象";
+				return "我是一个string 哈哈哈! 你没被实例化我就给你返回了，和和 我代理了这个对象";
 			}
 		}
 
@@ -80,7 +79,6 @@ public class MyBeanPostProcessor implements SmartInstantiationAwareBeanPostProce
 	}
 	public Constructor<?>[] determineCandidateConstructors(Class<?> beanClass,
 			String beanName) throws BeansException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	public Object getEarlyBeanReference(Object bean, String beanName)

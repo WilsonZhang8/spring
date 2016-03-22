@@ -8,12 +8,10 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import com.zghw.spring.demo.core.Ordered;
 import com.zghw.spring.demo.core.core.annonation.Do;
-import com.zghw.spring.demo.core.core.annonation.Fruit;
 import com.zghw.spring.demo.core.core.annonation.Test;
 import com.zghw.spring.demo.core.core.annonation.Todo;
 

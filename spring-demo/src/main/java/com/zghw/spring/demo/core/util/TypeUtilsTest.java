@@ -1,7 +1,5 @@
 package com.zghw.spring.demo.core.util;
 
-import org.springframework.util.TypeUtils;
-
 /**
  * java 5 泛型参数应用
  * @author zghw

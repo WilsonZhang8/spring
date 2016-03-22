@@ -5,6 +5,7 @@ public class Car {
 	private String number;
 	private double price;
 	private String brand;
+	public Car(){}
 	public Car(String name, double price) {
 		this.name = name;
 		this.price = price;
