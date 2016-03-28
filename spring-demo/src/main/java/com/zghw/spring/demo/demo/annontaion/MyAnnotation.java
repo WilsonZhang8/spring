@@ -15,22 +15,22 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-@Lazy(false)
-@Primary
-@DependsOn("facde")
-@Role(0)
-@Description("set annotation")
-@Scope(scopeName="sc",proxyMode=ScopedProxyMode.DEFAULT)
-@Component
-@ComponentScan
-@Import(MyAnnotation.class)
-@ImportResource(locations="application.xml",reader=XmlBeanDefinitionReader.class)
+//@Lazy(false)
+//@Primary
+//@DependsOn("facde")
+//@Role(0)
+//@Description("set annotation")
+//@Scope(scopeName="sc",proxyMode=ScopedProxyMode.DEFAULT)
+//@Component
+//@ComponentScan
+//@Import(MyAnnotation.class)
+//@ImportResource(locations="application.xml",reader=XmlBeanDefinitionReader.class)
 /**
  * 多个路径，分成字段，使用环境资源解析value路径，转换为resource，添加到环境中。
  * @author zghw
  *
  */
-@PropertySource(name="aa",value="a.properties,b.properties",ignoreResourceNotFound=true)
+//@PropertySource(name="aa",value="a.properties,b.properties",ignoreResourceNotFound=true)
 public class MyAnnotation {
 
 }
