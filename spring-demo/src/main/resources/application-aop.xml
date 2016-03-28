@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+	<!--开启aAspectj注解自动代理对象 <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	<!-- 目标对象 加入到IOC容器中进行管理 -->
+	<bean id="giftcardService"
+		class="com.zghw.spring.demo.demo.aop.service.impl.GiftcardServiceImpl"></bean>
+	<!-- 切面对象 加入到IOC容器中进行管理 -->
+	<bean id="giftcardAspect" class="com.zghw.spring.demo.demo.aop.aspect.GiftcardAspect"></bean>
+
+	<!-- 配置AOP -->
+	<aop:config>
+		<!-- 定义切面 ref引用切面对象 -->
+		<aop:aspect ref="giftcardAspect">
+		
+			<!-- 定义切点 -->
+			<!-- 表达式： execution(修饰符 返回类型 全类名.方法名(参数1类型，参数2类型，..)) and args(参数1名称，参数2名称) 
+				id一定要设置，用来给通知使用 -->
+			<aop:pointcut
+				expression="execution(public * com.zghw.spring.demo.demo.aop.service.impl.GiftcardServiceImpl.findByCardNo(String)) and args(cardNo)"
+				id="pointFindByCardNo" />
+				
+			<!-- 前置通知 arg-names 要使用的参数名称，在切面前置方法中使用会得到目标方法相同参数名称传过来的参数值， 就可以使用目标参数值了，多个参数用逗号分开 -->
+			<aop:before method="findByCardNoCacheBefore" pointcut-ref="pointFindByCardNo"
+				arg-names="cardNo" />
+
+			<!-- 后置通知， returning 定义目标方法返回值的返回值名称，可以在定义的切面方法findByCardNoCache(GiftCard 
+				retVal)中使用， -->
+			<aop:after-returning method="findByCardNoCache"
+				returning="retVal" arg-names="cardNo,retVal" pointcut-ref="pointFindByCardNo" />
+
+
+			<!-- 最终通知 -->
+			<aop:after method="findByCardNoCacheAfter"
+				pointcut="execution(* com.zghw.spring.demo.demo.aop.*.*.findByCardNo(..))" />
+
+			<!-- 环绕通知 缓存的使用 -->
+			<aop:around method="findByCardNoCacheAround" pointcut-ref="pointFindByCardNo"
+				arg-names="cardNo" />
+
+			<!--环绕通知 方法运行时间的测量 -->
+			<aop:around method="saveTime"
+				pointcut="execution(* com.zghw.spring.demo.demo.aop.*.*.save(com.zghw.spring.demo.demo.aop.pojo.Giftcard)) and args(giftcard)"
+				arg-names="giftcard" />
+
+
+		</aop:aspect>
+
+	</aop:config>
+</beans> 
