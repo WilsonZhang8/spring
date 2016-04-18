@@ -1,0 +1,63 @@
+1.在web.xml配置监听器
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+ContextLoaderListener监听器继承了ServletContextListener接口，ServletContextListener监听器提供了
+web容器启动时，初始化ServletContext后的事件监听，和销毁ServletContext前的事件监听。
+
+ContextLoaderListener在初始化ServletContext后进行了WebApplicationContext的初始化，在销毁ServletContext前进行了WebApplicationContext的销毁。
+
+ContextLoaderListener初始化WebApplicationContext都做了什么工作？
+
+1.WebApplicationContext实现类的查找
+	spring允许你配置WebApplicationContext实现类.
+  1)如果在web.xml中配置了ServletContext的初始化参数，其中名字为contextClass，则代表你配置了相应的WebApplicationContext容器实现类，例如：
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.XmlWebApplicationContext</param-value>
+	</context-param>
+  2)如果没有在web.xml中配置WebApplicationContext实现类，则查找classPath下存在的默认配置文件ContextLoader.properties属性文件，这个文件在static
+  静态域中初始化，具体配置如下：
+	org.springframework.web.context.WebApplicationContext=org.springframework.web.context.support.XmlWebApplicationContext
+得到实现类的类名，并使用反射得到该类型，并实例化该对象，这样就得到WebApplicationContext实例。
+这里默认使用XmlWebApplicationContext作为WebApplicationContext实例。
+
+2.配置XmlWebApplicationContext
+1.设置ServletContext
+2.设置spring配置文件资源路径，在web.xml配置了,容器在刷新时会使用这些配置来加载bean及设置
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml,/WEB-INF/springmvc.xml;/WEB-INF/spring/*</param-value>
+	</context-param>
+如果没有配置则使用/WEB-INF/applicationContext.xml
+3.配置环境变量，除了标准的运行环境参数System.getEnv()和System.getProperties()，spring还设置了一个环境变量，
+servletContextInitParams 值为当前的ServletContext
+
+4.支持配置XmlWebApplicationContext在刷新前，实现接口ApplicationContextInitializer
+实现initialize(XmlWebApplicationContext applicationContext)方法
+需要在web.xml中配置
+ 	<context-param>
+		<param-name>globalInitializerClasses</param-name>
+		<param-value>com.zghw.springmvc.demo.MyApplicationContextInitializer</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextInitializerClasses</param-name>
+		<param-value>com.zghw.springmvc.demo.MyApplicationContextInitializer1</param-value>
+	</context-param>
+globalInitializerClasses代表所有的web application都会应用
+contextInitializerClasses代表只有当前的web application会使用
+如果存在把这些实现类作为一个集合，转化为class类型，并实例化对象，排序调用initialize方法。
+5.刷新容器，wac.refresh();
+主要的一步：把容器加入到ServletContext ，让容器依附于Web容器。放入容器的名称为org.springframework.web.context.WebApplicationContext.ROOT
+然后把当前线程类加载器和WebApplicationContext绑定在一个map中，以便以后取用。
+
+总结：
+Web容器启动时，ContextLoaderListener实现了ServletContextListener接口，即在Servlet初始化阶段，会通知ContextLoaderListener监听器，初始化
+Context容器，这里使用到了ServletContext的初始化参数。即在web.xml配置的context-param
+1.首先查找配置的WebApplicationContext实例，通过默认配置或用户在web.xml配置的contextClass实现类，并实例化对象这里使用的是XmlWebApplicationContext。
+2.获取容器加载的配置文件，contextConfigLocation
+3.设置web的环境参数servletContextInitParams 值为当前的ServletContext
+4.实现了ApplicationContextInitializer接口用来初始化容器设置，并配置在了globalInitializerClasses或contextInitializerClasses，转化为class类型，并实例化对象，排序调用initialize方法。
+5.刷新容器，wac.refresh();IOC容器加载配置，解析BeanDefintion,初始化配置，运行部分处理器等等一系列工作。
+6.让IOC容器放入ServletContext中，作为Root容器名称为：org.springframework.web.context.WebApplicationContext.ROOT
+7.把当前线程的类加载和当前IOC容器WebApplicationContext绑定在一个map中，以便以后取用。

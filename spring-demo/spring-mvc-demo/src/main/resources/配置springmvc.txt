@@ -1,0 +1,39 @@
+1.添加依赖包
+spring-core 		核心包，底层的工具包
+spring-beans 		基础bean工厂生产bean
+spring-context 		高级的bean工厂生产bean ApplicationContext
+commons-logging 	spring记录日志需要的包
+spring-expression 	spring EL表达式包，主要用于bean属性的处理
+spring-aop 			spring AOP核心包
+spring-aspects 		spring AOP使用AspectJ注解包
+spring-web 			支持spring web的包
+spring-webmvc 		springMVC核心包
+2.在maven中添加依赖包
+
+  <properties>
+  <spring.version>4.1.9.RELEASE</spring.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-aspects</artifactId>
+	<version>${spring.version}</version>
+  </dependency>
+  <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-webmvc</artifactId>
+	<version>${spring.version}</version>
+  </dependency>
+  <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-web</artifactId>
+	<version>${spring.version}</version>
+  </dependency>
+  </dependencies>
+

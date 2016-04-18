@@ -1,16 +1,45 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-      version="3.0">
-      
-      <servlet>
-      	<servlet-name>appServlet</servlet-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<context-param>
+		<!-- 可配置的webFactory容器 -->
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.XmlWebApplicationContext</param-value>
+	</context-param>
+	<!-- 配置容器加载的spring文件可以使用， ； 使用目标下的所有文件则用/* -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml,/WEB-INF/springmvc.xml;/WEB-INF/spring/*</param-value>
+	</context-param>
+	<!--  所有的web application初始化刷新前，调用实现类的初始化容器功能  -->
+	<context-param>
+		<param-name>globalInitializerClasses</param-name>
+		<param-value>com.zghw.springmvc.demo.MyApplicationContextInitializer</param-value>
+	</context-param>
+	<!-- 在当前web application初始化刷新前，调用实现类的初始化容器功能  -->
+	<context-param>
+		<param-name>contextInitializerClasses</param-name>
+		<param-value>com.zghw.springmvc.demo.MyApplicationContextInitializer1</param-value>
+	</context-param>
+	
+	<!-- 配置一个监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 配置一个DispatcherServlet分发器 servlet-name 参数springmvc 对应的命名空间是springmvc-servlet 
+	如果init-param没有设置contextConfigLocation 则默认加载/WEB-INF/springmvc-servlet.xml文件-->
+	<servlet>
+      	<servlet-name>springmvc</servlet-name>
       	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       	<init-param>
       		<param-name>contextConfigLocation</param-name>
-      		<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+      		<param-value>/WEB-INF/spring/servlet-context.xml</param-value>
       	</init-param>
+      	<!-- 配置了随web容器一起启动初始化 -->
       	<load-on-startup>1</load-on-startup>
       </servlet>
-      
+      <servlet-mapping>
+      	<servlet-name>springmvc</servlet-name>
+      	<url-pattern>/</url-pattern>
+      </servlet-mapping>
 </web-app>

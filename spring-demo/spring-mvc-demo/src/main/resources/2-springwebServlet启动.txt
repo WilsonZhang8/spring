@@ -1,0 +1,103 @@
+
+HttpServletBean抽象类继承HttpServlet，实现了EnvironmentCapable, EnvironmentAware
+1.初始化方法
+  1.ServletConfig：把ServletCofig中的参数放入到PropertyValues这个属性管理对象中进行管理，并验证使用此Servlet必须要的参数。ServletCofig中如果没有必要的参数则抛出异常。这些必要的参数通过钩子方法让子类加入属性参数。
+  2.包装当前的Servlet实现类（DispatcherServlet）作为一个BeanWrapper.并赋予ResourceEditor编辑器，用来处理Servlet中的字符串属性转换为Resource对象，这个Resource
+  实现类是ServletContextResource它使用ServletContext来解析路径，使用了ServletContextResourceLoader资源加载器来加载。
+  3.设置钩子方法initBeanWrapper让子类为这个Servlet实例BeanWrapper设置配置，比如设置属性编辑器，类型转换器等。
+  4.设置Servlet实例BeanWrapper的属性即包含了ServletConfig参数和设置的一些属性值的PropertyValues。
+  5.设置钩子方法initServletBean让子类为这个Servlet设置需要的。
+2.销毁方法
+ 空实现，让子类实现
+3.环境
+实现EnvironmentAware接口代表IOC容器自动注入环境：void setEnvironment(Environment environment);注入ConfigurableEnvironment
+实现EnvironmentCapable接口代表了可以得到容器环境,如果容器没有设置环境environment 则设置为StandardServletEnvironment
+
+HttpServletBean主要是设置ServletConfig转化为PropertyValues中，并初始化当前Servlet为BeanWrapper对象。还设置了环境变量。
+
+
+FrameworkServlet抽象类继承HttpServletBean ，实现了ApplicationContextAware 
+
+实现ApplicationContextAware接口代表了容器自动注入IOC容器ApplicationContext，但这里处理仅仅是ApplicationContext是WebApplicationContext实例，并且WebApplicationContext空时才用。
+
+FrameworkServlet主要为了初始化一个新的WebApplicationContext，它使用了ROOT下的WebApplicationContext作为初始，这个可以从ServletContext中取得，
+因为在ServletContext监听器初始化阶段已经把ROOTWebApplicationContext加入到ServletContext属性中。
+拿到ROOT WebApplicationContext作为一个新的Servlet WebApplicationContext并设置ROOT为父容器，达到了双亲委派模式，
+并追加了一些servletConfig 命名空间等参数配置。
+配置的DispathcerServlet可以有多个，则代表会有不同的命名空间，格式为在web.xml中配置的servlet的名字追加-servlet
+比如<servlet-name>springmvc</servlet-name>则命名空间为springmvc-servlet
+
+容器已经初始化完成可以使用了。
+然后调用DispatcherServlet的方法onRefresh(ApplicationContext context)
+进行MVC的配置bean初始化，以便使用。
+
+把下列接口实现类的实例作为属性加入到DispatcherServlet中，或者从配置中加载的或使用默认的配置的。
+ MultipartResolver
+ LocaleResolver
+ ThemeResolver
+ HandlerMapping
+ HandlerAdapter
+ HandlerExceptionResolver
+ RequestToViewNameTranslator
+ ViewResolver
+ FlashMapManager
+
+上传文件解析器
+MultipartResolver 默认是没有配置的
+直接通过IOC容器ApplicationContext来查找是否存在配置的MultipartResolver.class类型的bean。
+如果存在bean作为属性设置到DispatcherServlet中，没有就不用
+
+国际化解析器
+LocaleResolver 默认是AcceptHeaderLocaleResolver
+直接通过IOC容器ApplicationContext来查找是否存在配置的LocaleResolver.class类型的bean。
+如果存在bean作为属性设置到DispatcherServlet中，没有bean，就查询DispatcherServlet.properties中配置的
+org.springframework.web.servlet.LocaleResolver=org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver
+同样会把该AcceptHeaderLocaleResolver作为bean放入到IOC容器中。
+
+主题解析器
+ThemeResolver 默认为FixedThemeResolver
+和上面LocaleResolver处理一样org.springframework.web.servlet.ThemeResolver=org.springframework.web.servlet.theme.FixedThemeResolver
+
+映射处理类
+HandlerMapping 默认：BeanNameUrlHandlerMapping和DefaultAnnotationHandlerMapping
+
+1.从ApplicationContext IOC容器中，查询单例HandlerMapping.class类型的bean，包含从父工厂查找。
+查找的所有HandlerMapping放入到Map对象中。
+2.把包含HandlerMapping的Map转化成集合，然后对HandlerMapping集合排序，并把此集合作为属性保存在servlet中。
+3.
+如果说bean工厂中未配置HandlerMapping，则使用默认策略，从DispatcherServlet.properties文件中，
+取出org.springframework.web.servlet.HandlerMapping配置的默认HandlerMapping类名
+org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
+通过配置的类名，查询对应的Class类型，并通过IOC创建一个实例对象，比如BeanNameUrlHandlerMapping，
+上面配置了两个HandlerMapping实现类名，则ApplicationContext有两个HandlerMapping实例。
+
+处理器适配器接口
+HandlerAdapter 默认HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter和AnnotationMethodHandlerAdapter
+和HandlerMapping查找同样的逻辑步骤
+org.springframework.web.servlet.HandlerAdapter=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,\
+	org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\
+	org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+
+处理异常解析器
+HandlerExceptionResolver 默认AnnotationMethodHandlerExceptionResolver、ResponseStatusExceptionResolver和DefaultHandlerExceptionResolver
+和HandlerMapping查找同样的逻辑步骤
+org.springframework.web.servlet.HandlerExceptionResolver=org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver,\
+	org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver,\
+	org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver
+	
+请求到视图翻译解析器
+RequestToViewNameTranslator 默认的是DefaultRequestToViewNameTranslator
+org.springframework.web.servlet.RequestToViewNameTranslator=org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator
+
+视图解析器
+
+ViewResolver 默认 InternalResourceViewResolver
+org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.view.InternalResourceViewResolver
+
+FlashMap管理器
+FlashMapManager 默认是 SessionFlashMapManager
+org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.SessionFlashMapManager
+
+总结：
+从IOC容器中查找相应的配置，如果查找不到，就使用DispatcherServlet.properties默认配置并把配置的类型加入到IOC中作为Bean。
+
