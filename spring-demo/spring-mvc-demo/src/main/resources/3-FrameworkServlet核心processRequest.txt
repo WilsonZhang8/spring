@@ -1,0 +1,42 @@
+FrameworkServlet核心方法processRequest
+
+我们知道基本的Http请求都会经过Servlet的service方法，它提供request和response对象供调用处理请求响应，它是Servlet的核心方法。
+springMVC在FrameworkServlet中实现该service方法，它使用了模板方法的方式，把主要的请求方法比如GET POST HEAD等方法，都委托给processRequest方法，
+processRequest方法抽象了主要前后功能，并预留了doService方法让子类DispatcherServlet来实现主要的请求响应处理。这就是模板方法的实现之一。
+现在我们看看FrameworkServlet中processRequest方法主要处理了哪些功能？
+当一个请求过来以后，processRequest做了如下步骤：
+1.国际化容器的保存方式 LocalContext(request.getLocal()的处理)
+如果是转发或包含的请求，则取得上一请求的本地Local对象LocalContext保存到ThreadLocal线程变量，并且通过request.getLocal()方法创建一个新的
+本地LocalContext保存在ThreadLocal线程变量。两个线程变量内部的(上一个请求)LocalContext和(当前请求)本地的LocalContext。
+
+如果当前是一个顶级的HTTP请求，取得当前的本地Local保存到ThreadLocal线程变量中以便在整个service方法中调用，
+并设置当前的线程变量为内部的LocalContext，供转发请求使用。
+
+2.请求属性的保存(request.attribute的处理)
+当一个请求是顶级请求时，从当前本地线程变量中取RequestAttributes对象为null。因为request中不存在属性值
+当一个请求是转发或包含的请求时，从当前本地线程变量中取出RequestAttributes对象不为null，因为request中包含了属性值，
+容器设置或上一个请求传过来的的，比如：javax.servlet.include.request_uri
+如果存在把这个属性对象RequestAttributes也保存在线程变量中ThreadLocal，
+
+3.注册了异步管理器，放到了request属性中(处理AsyncContext)
+这个以后在说
+
+4.调用子类的doService方法处理即DispatcherServlet的doService()方法。
+
+5.finally处理
+不管发生任何情况都会进入到finally处理
+ 1)把当前线程中的本地LocaleContext和本地的RequestAttributes设置为内部的供如果转发后使用，供上面步骤1和2循环检索。
+ 2)request中存在属性值则调用requestCompleted来完成属性的销毁，这里销毁是在RequestAttributes实例中保存了一个专门存储线程任务的Map，
+ 当执行requestCompleted方法后就会调用这个Map中的所有线程任务来处理request，这个自己可以扩展。当然如果session中的对象有改变，也要更新session，
+ 这个是spring内部来解决的。
+ 3)最后Servlet处理监听器，发布ServletRequestHandledEvent事件，
+ 你可以继承ApplicationListener<ServletRequestHandledEvent>用来事件的监听。
+ 在DispatcherServelt的service(不管是否出现异常)结束后，会触发ServletRequestHandledEvent时间，通知该监听器
+ 可以得到一些请求结果，比如：客户端IP，请求的URL，请求方式，sessionId，servlet名字，运行时间，异常原因
+ 如下代码：
+ @Component
+public class FinallyServiceListener implements ApplicationListener<ServletRequestHandledEvent> {
+	public void onApplicationEvent(ServletRequestHandledEvent event) {
+		System.out.println(event.toString());
+	}
+}
