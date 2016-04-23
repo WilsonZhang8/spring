@@ -1,15 +1,11 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
-	<context-param>
-		<!-- 可配置的webFactory容器 -->
-		<param-name>contextClass</param-name>
-		<param-value>org.springframework.web.context.support.XmlWebApplicationContext</param-value>
-	</context-param>
 	<!-- 配置容器加载的spring文件可以使用， ； 使用目标下的所有文件则用/* -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/applicationContext.xml,/WEB-INF/springmvc.xml;/WEB-INF/spring/*</param-value>
+		<!-- <param-value>/WEB-INF/applicationContext.xml,/WEB-INF/springmvc.xml;/WEB-INF/spring/*</param-value> -->
+		<param-value>/WEB-INF/spring/applicationContext.xml</param-value>
 	</context-param>
 	<!--  所有的web application初始化刷新前，调用实现类的初始化容器功能  -->
 	<context-param>

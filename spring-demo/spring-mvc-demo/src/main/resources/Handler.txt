@@ -1,0 +1,14 @@
+Handler能干什么？
+Handler是处理请求的核心业务对象，调用其方法可以处理请求响应。
+spring定义的Object handler比较抽象，你能够想象的并且实现的都可以做。
+Hanlder如果开发一个handler？
+可以实现Controller,配置XML，使用@Controller，@RequestMapping注解类或方法
+具体步骤看例子。
+springIOC如何管理这些handler？
+springIOC只认识bean对象，不认识handler bean，你可以通过你需要查找的handler特征，
+来查询对应的bean来作为你的handler。
+特征：比如：bean名称特征，bean的Class类型特征，或实现了接口的bean类型，或者包含了某个注解的bean，
+或者包含了某个包名等等，这些条件是刷选bean的作为你认为bean的最好方式。
+如何查询handler？
+通过上面方式从IOC容器查询到的Bean对象，即handler对象集合，你可以根据各种条件来算出对应请求urlPath路径，
+然后把urlPath路径和beanName放入到hash表中，如fianl map中，这样你可以通过map来查询对应的handler对象。

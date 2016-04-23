@@ -1,0 +1,46 @@
+HandlerAdapter用于适配各种处理器成相同的处理功能。
+在HandlerAdapter中有基本的四种处理器
+1.实现Servlet的handler处理器
+2.实现Controller的handler处理器
+3.实现HttpRequestHanlder的hanlder处理器
+4.方法注解RequestMapping正确格式的handler处理器
+它们都一个共同的功能就是使用HttpServletRequest请求和HttpServletResponse响应来处理请求逻辑。
+它们功能被适配成下面的方法，以便统一访问。
+public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)
+
+1.Servlet类型的handler处理器
+直接调用实现了Servlet的service(request，response)方法，返回null；
+2.Controller类型的handler处理器
+直接调用了ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+3.HttpRequestHandler类型的handler处理器
+直接调用了ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+4.方法注解RequestMapping类型hanlder处理器
+前三种处理器是实现了接口方法，然后使用不同的HandlerAdapter适配成
+public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)方法。
+注解的适配和上面不相同，它是基于方法注解@RequestMapping方法反射调用来实现handle方法，
+下面说下@RequestMapping注解方法是如何实现handle方法的。
+AnnotationMethodHandlerAdapter实现了HandlerAdapter，适配基于注解@RequestMapping对应方法的处理。
+public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)方法。
+1.得到handler对象对应的Class类型
+
+
+
+
+方法调用，获得返回值。
+1.得到这个方法真实的定义方法，排除桥梁方法
+2.如果存在session属性值，则session属性值全部放入到Model中，@SessionAttributes中存在的真实session值。
+3.解析@ModelAttribute注解中的返回值及属性值，放入到Model中
+4.解析handler方法即真实的处理方法，使用反射的机制，查询到参数组，使用该方法调用方法参数，handler对象使用反射机制取得返回值。
+
+循化方法参数设置取得参数真实数组值流程：
+1.循环该方法的参数值
+取得该参数信息，如参数类型，参数名称，参数上的注解
+1）.循环该参数上的注解，一个参数上值能有一个spring下面的注解
+	1.1）@RequestParam 请求参数是否必须存在默认为必须,设置默认值
+	1.2)@RequestHeader 请求header是否必须存在默认为必须,设置默认值
+	1.3)@RequestBody   请求body是否必须存在默认为必须 
+	1.4)@CookieValue  请求的cookie对象是否必须存在默认是必须,可以设置默认值
+	1.5)@PathVariable 请求URI中配置的{path}路径,对应方法参数
+	1.6)@ModelAttribute 绑定请求参数到对象上
+	1.7)@Vaule 设置参数值,可以使用EL表达式等
+	1.8)@Validated 参数验证设置

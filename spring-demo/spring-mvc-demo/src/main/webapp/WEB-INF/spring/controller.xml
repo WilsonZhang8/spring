@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="  
-            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd 
-            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd 
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd ">
+	<!-- 扫描注解用于往IOC容器中加入bean，默认扫描base-package中的类包含了 @Component, Repository, 
+		@Service, or @Controller 中的其中一个 -->
+	<context:component-scan base-package="com.zghw.springmvc.demo">
+	</context:component-scan>
+
+	<!-- 使用注解方式定义HandlerMapping -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<!-- 是否使用默认的后缀，默认为true，当请求的path为/user，则/user、/user.*、/user/三种模式都与该处理器handler匹配 
+			当设置为false时，只匹配/user -->
+		<property name="useDefaultSuffixPattern" value="true" />
+		<!-- 检索handler bean是否也要从父容器中去检索，默认为false，只在当前的容器中检索，一般是DispatcherServlet中的WebApplicationContext中检索 
+			如果设置为true，则代表检索handler bean也要从父容器ApplicationContext中检索,容器的双亲委派模式。 -->
+		<property name="detectHandlersInAncestorContexts" value="true"></property>
+		<!-- handler处理器是在初始化时直接从IOC容器中取出对应的bean对象，还到使用时才从容器中加载Bean对象？ 默认为false，直接加载成bean对象，如果设置为true，则在使用到handler时，才从IOC容器中加载handler 
+			bean -->
+		<property name="lazyInitHandlers" value="true"></property>
+		<!-- 用来设置“/”根路径的处理程序，没有太多必要设置 -->
+		<property name="rootHandler" ref="rootController"></property>
+		<!-- 用来设置“/*”根路径的处理程序，没有太多必要设置 -->
+		<property name="defaultHandler" ref="defaultController"></property>
+	</bean>
+	<!-- 配置hanlder拦截器 -->
+	<mvc:interceptors>
+		<!--mvc:interceptor可以配置一个或多个 -->
+		<mvc:interceptor>
+			<!--mvc:mapping 中的path，是要拦截的路径，可以使用Ant-style风格来配置 /*代表下一级目录，/**代表所有的子目录 -->
+			<mvc:mapping path="/auth/*" />
+			<mvc:mapping path="/admin/**" />
+			<!--mvc:exclude-mapping 中的path，是排除不要拦截的路径，可以使用Ant-style风格来配置 -->
+			<mvc:exclude-mapping path="/auth/index" />
+			<!-- 拦截器bean定义 -->
+			<ref bean="authInterceptor" />
+			<!--<bean class="com.zghw.springmvc.demo.handlerInterceptors.AuthInterceptor"></bean> -->
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans> 

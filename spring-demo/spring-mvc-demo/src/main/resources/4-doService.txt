@@ -1,0 +1,24 @@
+
+DispatcherServlet的doService方法作为父类FrameworkServlet中processRequest方法的部分实现
+我们来看看doService做了哪些工作？
+
+1.如果当前的请求是从include中来的话，如何判断呢就是看request的属性中是否包含了javax.servlet.include.request_uri
+存在则取出所有的请求属性，放入到镜像map中保存，供后面使用。
+2.
+1）把当前的WebApplicationContext放入到request属性中
+把属性名 org.springframework.web.servlet.DispatcherServlet.CONTEXT 属性值 当前IOC容器放入reuqest属性中
+2)把当前的LocalResolver放入到request属性中
+属性名为org.springframework.web.servlet.DispatcherServlet.LOCALE_RESOLVER属性值为初始化配置的LocalResolver
+3)把当前的ThemeResolver放入到request属性中
+属性名为org.springframework.web.servlet.DispatcherServlet.THEME_RESOLVER 属性值为初始化配置的ThemeResolver
+4)把当前的FlashMap放入到request属性中这个用出少暂时不做研究
+
+3.request属性设置完调用doDispatch(request, response);方法
+4.finally块进行处理，主要处理步骤1中存在map中的镜像请求属性
+首先判断的是当前的请求操作的异步是否处理完成，如果处理完成则把包含include方式的属性对象有改变过的设置为之前的属性值，就是说，include模式不能改变
+顶级请求属性值。
+
+
+第3步骤doDispatch方法是最核心的处理Servlet的方法下面我们来看下
+
+

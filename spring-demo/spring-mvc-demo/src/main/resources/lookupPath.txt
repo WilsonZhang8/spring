@@ -1,0 +1,27 @@
+查询请求的Path路径流程。
+	当request请求过来，
+	1，查找contextPath
+	 1)首先通过request.getAttribute("javax.servlet.include.context_path");查找contentPath
+	 如果为空，则代表不是include进来的请求即是一个顶级请求，	则通过request.getContextPath();来取得
+	 contextPath
+	 2）如果contextPath值为"/"，则path路径为空字符串“”
+	 3）如果contextPath不为空，并且设置了编码(默认是进行编码)特殊字符的转码，则进行路径的编码工作，返回编码后的contextPath
+	2.查找requestURI
+	 1)首先通过request.getAttribute("javax.servlet.include.request_uri");查找URI，
+	 如果为空，则代表不是include进来的请求是一个顶级请求，则通过request.getRequestURI();来取得URI。
+	 2)如果设置了清除requestUri中；分号的内容，则清除该内容(默认清除)，如果设置为不清除，则只清除；jsessionid中的内容；
+	 3)如果URI不为空，并且设置了编码(默认是进行特殊字符的转码)，则进行路径的编码工作，返回编码后的requestURI.
+	3.查找Path
+	通过contextPath和requestURI来查找Path，这个时候一般path都是null
+	4.如果Path不为空，则返回path，否则就返回requestUri
+	5.如果设置了查找全部uri匹配，则直接返回requestUri作为结果，默认false不查找全部。则执行6
+	6.查找servletPath
+	 1)首先通过request.getAttribute("javax.servlet.include.servlet_path");查找servletPath
+	 如果为空，则代表不是include进来的请求即是一个顶级请求，	则通过request.getServletPath();来取得
+	 servletPath
+     2)通过servletPath查找path，如果查询的path不为空，则返回path作为结果。
+	 3)如果path为空，则使用request.getPathInfo();来查询pathInfo,如果不为空则返回pathInfo作为结果。
+	 4）如果pathInfo为空，则返回servletPath作为结果。
+从返回的结果看：可以是相对IOC容器或ServletContext的path，也可以是servlet中的requestUri或pathInfo，或者是全部的servletPath作为查找的请求path。
+这些基于配置灵活控制。
+

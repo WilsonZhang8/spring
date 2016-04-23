@@ -1,0 +1,41 @@
+Object handler是处理请求的对象，spring抽象了Object hanlder对象，类型为Object，这个处理器对象可以是任何类型，比如Servlet 、Controller或者是方法等，也可以自定义。
+
+spring 为了调用Hanlder处理器来处理，需要确定这个处理器的具体类型，以便使用该处理器的功能，spring对handler对象做了适配工作。
+
+HandlerAdatper用来适配Object handler对象的主要接口。
+开发者配置可以配置多个的HandlerAdatper实例，没有配置则使用springmvc默认配置的HandlerAdatper，作为bean放入IOC容器中。初始化到DispatcherServlet中
+当一个请求过来后，得到处理器Object handler，循环该请求DispatcherServlet中的所有HandlerAdatper，
+并一一调用HandlerAdatper.supports(handler)方法，返回值为boolean类型，返回的true表示该HandlerAdatper支持hanlder对象，则返回这个HandlerAdatper。
+supports的方法主要实现为类型转换是否成功，当然复杂的支持需要更多的处理，比如AnnotationMethodHandlerAdapter
+HandlerAdatper有以下几种适配器，用来适配不同的handler处理器。
+SimpleServletHandlerAdapter 	 用来适配Servlet handler 
+HttpRequestHandlerAdapter    	用来适配HttpRequestHandler handler
+SimpleControllerHandlerAdapter 	用来适配Controller handler
+AnnotationMethodHandlerAdapter  用来适配RequestMapping注解方法 handler，现在不建议使用了，建议使用下面的RequestMappingHandlerAdapter
+RequestMappingHandlerAdapter   这个是AnnotationMethodHandlerAdapter的升级版，建议以后使用这个RequestMappingHandlerAdapter
+
+因此，在现有的适配器中我们会发现，可以使用的有四种处理器类型：
+1.实现Servlet的handler处理器
+2.实现Controller的handler处理器
+3.实现HttpRequestHanlder的hanlder处理器
+4.方法注解RequestMapping正确格式的handler处理器
+
+这几种处理器分别是如何工作的呢？
+1.Servlet类型的handler处理器
+直接调用实现了Servlet的service()方法，返回null；
+2.Controller类型的handler处理器
+直接调用了ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+3.HttpRequestHandler类型的handler处理器
+直接调用了ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+4.方法注解RequestMapping类型hanlder处理器
+实现方法我们会全面分析单独说
+
+HandlerAdatper适配器如果适配handler成功，把处理器对应的处理方式统一进行适配成handle方法，并执行处理返回视图数据对象。
+ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)
+
+Controller和HttpRequestHanlder作为一个处理器接口，定义了一个处理方法
+ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) 
+实现类实现这个方法，对请求响应进行处理，实现业务逻辑。
+
+
+

@@ -15,6 +15,7 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
 public class FinallyServiceListener implements ApplicationListener<ServletRequestHandledEvent> {
 
 	public void onApplicationEvent(ServletRequestHandledEvent event) {
+		
 		System.out.println(event.toString());
 	}
 

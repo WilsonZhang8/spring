@@ -1,0 +1,39 @@
+HandlerInterceptor
+
+工作流接口,允许自定义处理程序执行链。应用程序可以注册任意数量的现有或自定义拦截器组应用于对应的处理程序,添加常见预处理的行为,而不需要修改每个处理器实现。
+HandlerAdapter在触发处理器事件之前，会调用对应的HandlerInterceptor。
+这种机制可以用于大量的预处理方面,如授权检查,或共同处理程序行为如locale或Theme的变化。它的主要目的是抽取重复的处理程序代码。
+在一个异步处理场景中,处理器可能在一个单独的线程执行而没有呈现或调用主线程退出postHandle和afterCompletion回调。当并发处理程序执行完成后,请求派为了继续呈现模型和本合同的所有方法调用。
+参考org.springframework.web.servlet.AsyncHandlerInterceptor选项和细节。
+HandlerInterceptor基本上是类似于一个Servlet过滤器,但与后者只是允许定制的预处理与禁止的选项的执行处理程序本身,和自定义后处理。
+过滤器是更强大的,例如他们允许交换的请求和响应对象传下来的链。注意,一个过滤器被配置在网络web.xml,而HandlerInterceptor是配置在ApplicationContext中
+作为一个基本准则,细粒度handler-related预处理任务候选人HandlerInterceptor实现,特别是提出共同处理程序代码和授权检查。
+另一方面,一个过滤器非常适合请求内容并查看内容处理,如多部分形式和GZIP压缩。这通常显示当一个需要过滤器映射到特定内容类型(如图片),或所有请求。。
+接口方法
+    处理器去执行前执行该方法，可以决定终止是否还要进行处理器处理。
+    返回true代表继续，返回false则代表不用继续了我已经处理完成了。
+	boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+	    throws Exception;
+	    
+    拦截一个处理程序的执行。在HandlerAdapter调用处理程序之后执行,但在DispatcherServlet呈现视图之前。可以使添加一些Model对象通过给ModelAndView。
+    DispatcherServlet流程处理程序执行链,包括任意数量的拦截器,最后处理程序本身。使用此方法,每个拦截器可以执行后处理,得到适用于逆顺序执行链。
+	    
+	void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
+			throws Exception;
+
+    当preHandle方法返回false时，就会被触发调用，它是逆方向调用拦截器链,或者在处理程序时发生错误，也会执行。
+	void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception;
+
+实现类
+WebContentInterceptor继承了WebContentGenerator实现了HandlerInterceptor，这个拦截器可以设置缓存及缓存时间、请求方法、
+  url是否使用默认的iso-8859-1，及URL解析设置，PathMatcher路径匹配器等，还有设置session是否是需要的，可以说这个拦截器功能还是很多的。
+AsyncHandlerInterceptor接口继承HandlerInterceptor，用来处理异步请求，直接返回不执行postHandle和afterCompletion的代替方法afterConcurrentHandlingStarted。
+WebRequestHandlerInterceptorAdapter 异步请求处理专门讲解
+HandlerInterceptorAdapter 这个是简单的实现模板，可以继承来实现自己的拦截器定义
+ConversionServiceExposingInterceptor 可以设置一个ConversionService
+LocaleChangeInterceptor  可以设置国际化解析器
+ThemeChangeInterceptor  可以设置主题解析器
+ResourceUrlProviderExposingInterceptor  资源URL提供者，你可以配置好多工具来处理URL，主要是放入request的属性中了。
+UserRoleAuthorizationInterceptor 用户权限拦截器
+自定义自己的拦截器

@@ -1,0 +1,32 @@
+类级别：RequestMapping SessionAttributes
+方法级别
+1.RequestMapping
+2.InitBinder
+3.ModelAttribute
+HandlerMethodResolver提供存储
+private final Set<Method> handlerMethods = new LinkedHashSet<Method>();
+private final Set<Method> initBinderMethods = new LinkedHashSet<Method>();
+private final Set<Method> modelAttributeMethods = new LinkedHashSet<Method>();
+private final Set<String> sessionAttributeNames = new HashSet<String>();
+private final Set<Class<?>> sessionAttributeTypes = new HashSet<Class<?>>();
+ServletHandlerMethodResolver 提供了更高级别的缓存
+private final Map<Method, RequestMappingInfo> mappings = new HashMap<Method, RequestMappingInfo>();
+
+RequestMappingInfo结构
+private final String[] patterns;
+private final RequestMethod[] methods;
+private final String[] params;
+private final String[] headers;
+
+  方法注解@RequestMapping主要有四种属性值，使用它们来验证一个请求是否符合该处理器来进行处理。
+  只有以下四种方式都匹配成功了，才能进入方法处理
+  请求路径匹配
+  value属性定义了映射多个路径，有一个路径与请求路径相同，则验证成功
+  请求方法匹配
+  method属性判断请求的属性是否在定义的请求集合中，如果是则验证成功
+  请求参数匹配
+  params = {"id=2", "name!=3", "valve", "!key"},表示
+  请求的参数名称不能存在key，必须存在value，参数id的值必须=2，参数name的值不能等于3
+  仅支持这四种，当然这是相对于AnnotationMethodHandlerAdapter
+  请求头匹配
+  headers和params的验证规则基本相同，它用来验证请求头部的信息。

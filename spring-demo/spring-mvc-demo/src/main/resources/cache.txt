@@ -1,0 +1,20 @@
+session
+设置响应的缓存头信息
+如果没有设置缓存时间是则默认为-1，响应不会发送缓存头信息。
+缓存默认支持的请求方式为GET POST HEAD
+HTTP1.0使用的header 参数 Expires
+Expoires=设置的时间为当前的时间戳+设置的过期时间秒*1000l(毫秒)
+如果设置的缓存时间为0
+Pragma=no-cache
+Expires=1L
+HTTP1.1使用的header 参数 max-age
+max-age=设置的过期时间秒, must-revalidate
+如果设置的缓存时间为0
+Cache-Control=no-cache
+Cache-Control=no-store
+
+准备和检查，设置了Session属性后
+1.支持的方法
+2.设置了session属性，进行检查是否必须需要session才能继续
+3.当设置的缓存时间大于0时，进行响应缓存头参数的设置
+4.当设置的缓存时间等于0时，设置响应缓存头不缓存，不储存。

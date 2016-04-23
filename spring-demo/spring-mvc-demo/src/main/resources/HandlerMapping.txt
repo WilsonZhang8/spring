@@ -1,0 +1,92 @@
+HandlerMapping
+一个HttpServletRequest对象映射出处理器对象HandlerExecutionChain。
+
+AbstractHandlerMapping主要工作是在初始化HandlerMapping时设置配置IOC容器ApplicationContext和ServletContext对象，包括
+初始化MappedInterceptor和适配配置的HandlerInterceptor到HandlerExcectuionChain中，并提供了钩子方法让子类来实现查询Hanlder对象。
+
+AbstractHandlerMapping抽象类继承了WebApplicationObjectSupport实现了HandlerMapping接口和Ordered接口
+WebApplicationObjectSupport抽象类继承了ApplicationObjectSupport实现了ServletContextAware接口
+ApplicationObjectSupport抽象类实现了ApplicationContextAware接口
+从继承实现接口来看，当前的AbstractHandlerMapping初始化后拥有了当前IOC容器和web容器对象，可以使用这两个容器对象来进行操作。
+ApplicationContext、ServletContext
+AbstractHandlerMapping也做了初始化工作，在初始时，它从bean工厂中查询所有MappedInterceptor.class，以bean的名称key，MappedInterceptor对象为value，
+存储到Map集合中，供以后使用。
+并且把设置的拦截器适配到不同的MappedInterceptor 和HandlerInterceptor(WebRequestInterceptor)，存储到Map中供以后使用。
+实现了ordered代表了，多个HanlderMapping可以进行排序进行优先选择。
+最多的还是AbstractHandlerMapping定义了配置参数
+在实现HandlerMapping的方法时，使用了模板方法，定了取得HandlerExecutionChain对象的骨架，让子类来取得Handler，并取得该类的拦截器，
+把Handler和拦截器集合HandlerInterceptor放入到HandlerExecutionChain返回。
+public final HandlerExecutionChain getHandler(HttpServletRequest request)
+
+AbstractUrlHandlerMapping只做两件事，提供注册handler和查询handler
+
+AbstractUrlHandlerMapping继承了AbstractHanlderMapping并实现了查询Handler对象的抽象方法。
+如何查找handler对象的呢？
+首先AbstractUrlHandlerMapping中有一个存储了所有的handler的Map集合，其中key是请求地址，value是对应的handler处理器。
+使用key可以查询到value，即首先从request中查询到请求path，然后通过请求的path查询到handler。
+1.通过request查询到path路径具体过程看另一个文档，如何查询请求path。
+2.通过请求path作为key，查询map中是否存在handler，如果存在，判断是不是String类型的bean名称，如果是则使用IOC容器来查询该处理器handler对象。
+验证handler对象，验证的具体实现留给子类，并把这个handler绑定到HandlerExecutionChain上，并设置暴露的属性最好url配置和请求的URL匹配。
+3。如果handler查询不到，则使用Ant-style风格来匹配最合适的URL对应的hanlder。
+4.如果还是查询看是否是根路径“/”,使用设置的根处理器RootHandler进行处理，否则使用默认处理器DefaultHandler。
+5，无法得到handler就返回null。
+AbstractUrlHandlerMapping 提供了注册的handler处理器的方法，通过传进来的urlPath和handler注册存储在final map中，供查询，
+子类可以调用这个方法来向其注册handler。
+注册判断流程:
+1.如果不是懒加载方式，则从IOC容器中取出urlPath对应的handler bean。
+2.从当前的注册map中通过urlPath取出handler，如果存在，handler和IOC容器取出的bean不一样，则报错，不能替换map中的handler。
+如果IOC容器中不存在，handler已经存在map中，则不做任何操作。
+3.如果map通过urlPath查询不到存在的handler，则判断如下：
+   1）当前的urlPath如果为根路径 “/” 则放入到RootHandler中
+   2）当前的urlPath如果为“/*”则放入到DefaultHandler中
+   3)否则就直接放入map中
+
+AbstractDetectingUrlHandlerMapping继承了AbstractUrlHandlerMapping
+AbstractDetectingUrlHandlerMapping做一件事就是在该实现bean初始化后，自动获取ApplicationContext容器中的所有bean名称，
+循化得到的所有bean名称，根据bean的名称，让子类实现通过bean名称得到urlPath的方法determineUrlsForHandler(String beanName)，
+如果取得的urlPath不为空，则将得到的bean名称和urlPath注册到父类AbstractUrlHandlerMapping中存储handler的final map中。
+
+SimpleUrlHandlerMapping继承了AbstractUrlHandlerMapping
+它是最简单的URLHandler，它作为一个bean对象，配置到xml，该对象包含了一个map，key是映射的URL，value是一个handler bean；
+
+使用beanName作为handler处理器
+BeanNameUrlHandlerMapping继承了AbstractDetectingUrlHandlerMapping实现了determineUrlsForHandler(String beanName)
+实现方法很简单，如果给定的beanName为“/”开头就把beanName作为urlPath返回。如果beanName有别名，别名也为“/”开头则也加入到urlPath中。
+然后作为String[]数组返回。
+那么我们在配置bean对象时，只要bean的id或者name或者别名以“/”开头的，则该bean对象会被当作handler对象。
+
+实现了Controller来作为handler处理器。
+AbstractControllerUrlHandlerMapping继承了AbstractDetectingUrlHandlerMapping，
+这个抽象类主要是对于实现了Controller类型的类作为handler，你可以配置实现Controller类所在的包名或类型，比如：排除某个包中的某些类。
+定义了抽象方法 String[] buildUrlsForHandler(String beanName, Class<?> beanClass);让子类返回beanName和beanClass类型返回的urlPath
+
+ControllerBeanNameHandlerMapping继承了AbstractControllerUrlHandlerMapping
+它实现了抽象方法buildUrlsForHandler，如果实现了Controller接口的bean名字没有以“/”开头，则添加一个“/”，作为一个urlPath，
+当然你也可以设置为urlPath设置前缀URL和后缀URL，那么他的urlPath = urlPrefix+“/”+beanName+urlSuffix
+
+ControllerClassNameHandlerMapping继承AbstractControllerUrlHandlerMapping
+它实现了抽象方法buildUrlsForHandler，如果实现Controller接口的bean，Class类名为XyzController，则对应的urlPath为/xyz，
+你可以选择更多的配置来使用包名和类名来映射urlPath.
+
+DefaultAnnotationHandlerMapping实现了AbstractDetectingUrlHandlerMapping，它是基于@RequestMapping注解来取得对应的urlPath集合。
+
+取得urlPath集合的流程：
+1.使用beanName从IOC容器中查询出对应的bean类型。
+2.使用beanName从IOC容器中查询RequestMapping.class对应的RequestMapping注解，
+  1）如果该bean未定义@RequestMapping注解，则查询是否存在@Controller注解，如果不存在返回null，
+  否则添加方法级别的@RequestMapping
+  2）如果该bean定义了@RequestMapping注解，则顶级@RequestMapping注解urlPath+方法级别的urlPath
+  主要两种情况吧，类级别的@RequestMapping注解存在则类级别的@RequestMapping中的value值+方法级别的urlPath
+  否则就方法级别的urlPath。
+  在加入urlPath时，如果urlPath不包含 ”.“ ，并且不是以“/”结尾，则多追加两个urlPath，urlPath+“.*”和urlPath+“/”，应该是为了快速检测匹配。
+  
+AbstractHandlerMethodMapping  RequestMappingInfoHandlerMapping RequestMappingHandlerMapping
+是基于注解方法来映射的更灵活，分离了参数，使用了泛型。这个暂时不说了,有空再看.
+从以上几种方式可以看出 handler已经有四种方式类型的处理器了。
+1.Controller
+2.方法注解@RequestMapping
+3.Servlet
+4.bean
+5.自定义
+
+
